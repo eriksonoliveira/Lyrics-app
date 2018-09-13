@@ -3,12 +3,13 @@ export function createURLArtist(track, artist) {
 
   // replace spaces with %20
   artist = replaceSpaces(artist);
+  console.log(artist);
   track = replaceSpaces(track);
 
   const BASE_URL = "https://api.spotify.com/v1/search?";
-  const FETCH_URL = BASE_URL + "q=" + artist + "&type=artist&limit=1";
+  const FETCH_URL = `${BASE_URL}q=track%3A${track}%20artist%3A${artist}&type=track&limit=1`;
   const accessToken =
-    "BQBaNwNcZJXaedron-mJUFHoDqPuT_cN2wkQ2ugh0E2nLTZM3It2T_UX2OVomzF4_c-E5fddYqywS3IIgDtxphh7rdyPMzd4fbJqQBOg31zep6tDJacIHMiUEEGTlaDByeG84iESAY6nKGPX_v0-vovWaYex_Jr9FHF4PCM&refresh_token=AQDs3ckB-Zc2hWUDqNIl-UQsAzwv8dOKisoaBi3sxA5c0gU0H9JK58kx7k08DoT--rm8oXgdRhf0KnWfT7nsh87ACyDGbBgaJp_6J3wwhXj1YzaDX47rVGsNdarHWduXa_4-CQ";
+    "BQC4MWTKnuuzkqlssz8VLMEz098m5B8iO83I0LVnWPlcOUSuuEEbmwlbk6ZrCu-JxvOpgGMF_h_S_D_RkmcvjXNBetu9OBL6tKNRUqIW-BBSTgphfmcn612TjlMZJSan29FMZi2NkcpkELdsLkpjBwQw4adluuZcn3ZSJtE&refresh_token=AQDIO_T9iOYynyfLjRJX-JuLQ1U0Pcu1jS4Exqj4vgms7UqehjR1Guv_BVY2VyBi8i7YwKFilXHCmolznBYBxYDMPlmskJrmnHrw7LWpBPJrcXQOmQtlPaVMcJFJIitzpM8vig";
 
   const headers = {
     method: "GET",
@@ -23,7 +24,32 @@ export function createURLArtist(track, artist) {
   return { FETCH_URL, headers };
 }
 
-function replaceSpaces(str) {
-  const reg = /\s+/;
-  return reg.test(str) && str.replace(reg, "%20");
+// Remove 'feat.' from artist string (Spotify does not recognize if it's present)
+function prepareString(str) {
+  const reg = /feat./;
+  let newStr;
+
+  if (reg.test(str)) {
+    str = str.split(" ");
+    const featIndex = str.findIndex(elem => reg.test(elem));
+    newStr = str.slice(0, featIndex);
+    newStr = newStr.join(" ");
+
+    return newStr;
+  }
+
+  return str;
 }
+
+function replaceSpaces(str) {
+  str = prepareString(str);
+
+  const reg = /\s+/g;
+
+  // Resolver problema com '&' na string
+
+  return reg.test(str) ? str.replace(reg, "%20") : str;
+}
+
+// ("https://api.spotify.com/v1/search?q=track%3AI%20Love%20It%20(&%20Lil%20Pump)%20artist%3AKanye%20West&type=track&limit=1");
+// ("https://api.spotify.com/v1/search?q=track%3AI%20Love%20It%20(%26%20Lil%20Pump)%20artist%3AKanye%20West&type=track&limit=1");

@@ -11,7 +11,8 @@ import Spinner from "../layout/Spinner";
 class Lyrics extends Component {
   state = {
     track: {},
-    lyrics: {}
+    lyrics: {},
+    artist: {}
   };
 
   componentDidMount() {
@@ -33,15 +34,21 @@ class Lyrics extends Component {
         );
       })
       .then(res => {
-        this.setState({ track: res.data.message.body.track });
+        const track = res.data.message.body.track;
+
+        this.setState({ track });
 
         // test spotify
-        const param = createURLArtist("one kiss", "calvin harris");
-        console.log(param);
+        const param = createURLArtist(track.track_name, track.artist_name);
+        console.log(param.FETCH_URL);
         return axios.get(param.FETCH_URL, param.headers);
       })
       .then(json => {
-        console.log(json);
+        const artist = json.data.tracks.items[0];
+
+        this.setState({ artist });
+
+        console.log(artist);
       })
       .catch(err => console.log(err));
   }
