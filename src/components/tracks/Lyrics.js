@@ -35,17 +35,22 @@ class Lyrics extends Component {
       })
       .then(res => {
         const track = res.data.message.body.track;
-
         this.setState({ track });
 
         // test spotify
-        const param = createURLArtist(track.track_name, track.artist_name);
-        console.log(param.FETCH_URL);
+        return axios.get("http://localhost:8888/token");
+      })
+      .then(token => {
+        const param = createURLArtist(
+          this.state.track.track_name,
+          this.state.track.artist_name,
+          token.data.token
+        );
+
         return axios.get(param.FETCH_URL, param.headers);
       })
       .then(json => {
         const artist = json.data.tracks.items[0];
-
         this.setState({ artist });
 
         console.log(artist);
@@ -54,13 +59,21 @@ class Lyrics extends Component {
   }
 
   render() {
-    const { track, lyrics } = this.state;
+    const { track, lyrics, artist } = this.state;
+
+    const iframeStyle = {
+      width: "80%",
+      height: 80
+    };
+
     // console.log(track);
     if (
       track === undefined ||
       lyrics === undefined ||
+      artist === undefined ||
       Object.keys(track).length === 0 ||
-      Object.keys(lyrics).length === 0
+      Object.keys(lyrics).length === 0 ||
+      Object.keys(artist).length === 0
     ) {
       return <Spinner />;
     } else {
@@ -99,6 +112,26 @@ class Lyrics extends Component {
             <li className="list-group-item">
               <strong>Release Date</strong>:{" "}
               <Moment format="MM/DD/YYYY">{track.first_release_date}</Moment>
+            </li>
+            <li className="list-group-item">
+              <iframe
+                src={`https://open.spotify.com/embed/track/${artist.id}`}
+                style={iframeStyle}
+                frameBorder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+                title="Spotify play button"
+              />
+            </li>
+            <li className="list-group-item">
+              <a
+                className="btn btn-success btn-lg"
+                href={artist.external_urls.spotify}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Listen on <strong>Spotify</strong>
+              </a>
             </li>
           </ul>
         </React.Fragment>
