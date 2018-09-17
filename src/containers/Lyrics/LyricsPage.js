@@ -38,7 +38,7 @@ class LyricsPage extends Component {
         const track = res.data.message.body.track;
         this.setState({ track });
 
-        console.log(track);
+        //console.log(track);
 
         // Get token and track info from spotify
         return axios.get("http://localhost:8888/token");
@@ -50,13 +50,23 @@ class LyricsPage extends Component {
           token.data.token
         );
 
+        // console.log(token.data.token);
+
         return axios.get(param.FETCH_URL, param.headers);
       })
       .then(json => {
-        const artist = json.data.tracks.items[0];
-        this.setState({ artist });
+        if (json.data.tracks.items.length > 0) {
+          const artist = json.data.tracks.items[0];
+          this.setState({ artist });
 
-        console.log(artist);
+          console.log(artist);
+        } else {
+          this.setState({
+            artist: { id: 0, external_urls: { spotify: "https://spotify.com" } }
+          });
+
+          console.log(json);
+        }
       })
       .catch(err => console.log(err));
   }

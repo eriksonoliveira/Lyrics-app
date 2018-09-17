@@ -14,7 +14,13 @@ const reducer = (state, action) => {
     case "CLEAR_TRACKS":
       return {
         ...state,
-        tracks_list: []
+        tracks_list: action.payload
+      };
+    case "NOT_FOUND":
+      return {
+        ...state,
+        tracks_list: action.payload,
+        heading: "No track found"
       };
     default:
       return state;
@@ -31,7 +37,7 @@ export class Provider extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=can&f_has_lyrics=1&apikey=${
+        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=ca&f_has_lyrics=1&apikey=${
           process.env.REACT_APP_MM_KEY
         }`
       )

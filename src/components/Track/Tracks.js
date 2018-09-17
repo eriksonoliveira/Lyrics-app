@@ -12,6 +12,8 @@ class Tracks extends Component {
           const { tracks_list, heading } = value;
           if (tracks_list === undefined || tracks_list.length === 0) {
             return <Spinner />;
+          } else if (tracks_list[0] === "not_found") {
+            return <h3 className="text-center mb-4">{heading}</h3>;
           } else {
             return (
               <React.Fragment>

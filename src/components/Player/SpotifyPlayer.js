@@ -6,16 +6,20 @@ const SpotifyPlayer = props => {
     height: 80
   };
 
-  return (
-    <iframe
-      src={`https://open.spotify.com/embed/track/${props.artist_id}`}
-      style={iframeStyle}
-      frameBorder="0"
-      allowtransparency="true"
-      allow="encrypted-media"
-      title="Spotify play button"
-    />
-  );
+  if (props.artist_id === 0) {
+    return <p>No preview available</p>;
+  } else {
+    return (
+      <iframe
+        src={`https://open.spotify.com/embed/track/${props.artist_id}`}
+        style={iframeStyle}
+        frameBorder="0"
+        allowtransparency="true"
+        allow="encrypted-media"
+        title="Spotify play button"
+      />
+    );
+  }
 };
 
 export default SpotifyPlayer;

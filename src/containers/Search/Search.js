@@ -36,16 +36,25 @@ class Search extends Component {
         }`
       )
       .then(res => {
-        console.log(res);
+        if (res.data.message.header.available !== 0) {
+          dispatch({
+            type: "SEARCH_TRACKS",
+            payload: res.data.message.body.track_list
+          });
 
-        dispatch({
-          type: "SEARCH_TRACKS",
-          payload: res.data.message.body.track_list
-        });
+          this.setState({
+            trackTitle: ""
+          });
+        } else {
+          dispatch({
+            type: "NOT_FOUND",
+            payload: ["not_found"]
+          });
 
-        this.setState({
-          trackTitle: ""
-        });
+          this.setState({
+            trackTitle: ""
+          });
+        }
       })
       .catch(err => console.log(err));
   }
