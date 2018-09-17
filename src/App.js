@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Navbar from "./components/layout/Navbar";
-import Index from "./components/layout/Index";
-import LyricsPage from "./components/tracks/LyricsPage";
+import Navbar from "./components/Navbar/Navbar";
+import Index from "./components/Index/Index";
+import LyricsPage from "./containers/Lyrics/LyricsPage";
 
 import { Provider } from "./context";
 

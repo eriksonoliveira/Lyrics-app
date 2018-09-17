@@ -3,12 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 
-// Test spotify API
 import { createURLArtist } from "../../spotify";
 
-import Spinner from "../layout/Spinner";
-import SpotifyPlayer from "./SpotifyPlayer";
-import Lyrics from "./Lyrics";
+import Spinner from "../../components/Spinner/Spinner";
+import SpotifyPlayer from "../../components/Player/SpotifyPlayer";
+import Lyrics from "../../components/Lyrics/Lyrics";
 
 class LyricsPage extends Component {
   state = {
@@ -39,7 +38,9 @@ class LyricsPage extends Component {
         const track = res.data.message.body.track;
         this.setState({ track });
 
-        // test spotify
+        console.log(track);
+
+        // Get token and track info from spotify
         return axios.get("http://localhost:8888/token");
       })
       .then(token => {

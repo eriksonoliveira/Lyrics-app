@@ -5,9 +5,9 @@ function prepareString(str) {
 
   if (reg.test(str)) {
     str = str.split(" ");
+    // Get index of 'feat.' string in the array
     const featIndex = str.findIndex(elem => reg.test(elem));
-    newStr = str.slice(0, featIndex);
-    newStr = newStr.join(" ");
+    newStr = str.slice(0, featIndex).join(" ");
 
     return newStr;
   }
@@ -18,9 +18,12 @@ function prepareString(str) {
 export function replaceSpaces(str) {
   str = prepareString(str);
 
-  const reg = /\s+/g;
+  const regSpace = /\s+/g;
+  const regAmp = /&+/g;
 
-  // Resolver problema com '&' na string
+  // improve this code
+  str = regSpace.test(str) ? str.replace(regSpace, "%20") : str;
+  str = regAmp.test(str) ? str.replace(regAmp, "%26") : str;
 
-  return reg.test(str) ? str.replace(reg, "%20") : str;
+  return str;
 }

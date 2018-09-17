@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 
-import Spinner from "../layout/Spinner";
+import Spinner from "../Spinner/Spinner";
 import Track from "./Track";
 
 class Tracks extends Component {

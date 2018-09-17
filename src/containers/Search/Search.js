@@ -36,6 +36,8 @@ class Search extends Component {
         }`
       )
       .then(res => {
+        console.log(res);
+
         dispatch({
           type: "SEARCH_TRACKS",
           payload: res.data.message.body.track_list
