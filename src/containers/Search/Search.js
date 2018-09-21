@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Consumer } from "../../context";
 
 class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       trackTitle: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
     this.findTrack = this.findTrack.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.changeActivePage("home");
   }
 
   handleChange(e) {
@@ -19,77 +23,87 @@ class Search extends Component {
     });
   }
 
-  findTrack(dispatch, e) {
+  handleFocus(dispatch) {
+    dispatch({
+      type: "INPUT_FOCUS",
+      payload: []
+    });
+  }
+
+  findTrack(dispatch, list_active, e) {
     e.preventDefault();
 
+    // If the list is active, just clear the list, otherwise, make the list active
+    const type = list_active ? "CLEAR_TRACKS" : "SHOW_LIST";
+
     dispatch({
-      type: "CLEAR_TRACKS",
+      type,
       payload: []
     });
 
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${
-          this.state.trackTitle
-        }&page_size=10&page=1&s_track_rating=desc&apikey=${
-          process.env.REACT_APP_MM_KEY
-        }`
-      )
-      .then(res => {
-        if (res.data.message.header.available !== 0) {
-          dispatch({
-            type: "SEARCH_TRACKS",
-            payload: res.data.message.body.track_list
-          });
+    if (this.state.trackTitle.length > 0) {
+      axios
+        .get(
+          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${
+            this.state.trackTitle
+          }&page_size=10&page=1&s_track_rating=desc&apikey=${
+            process.env.REACT_APP_MM_KEY
+          }`
+        )
+        .then(res => {
+          if (res.data.message.header.available !== 0) {
+            dispatch({
+              type: "SEARCH_TRACKS",
+              payload: res.data.message.body.track_list
+            });
 
-          this.setState({
-            trackTitle: ""
-          });
-        } else {
-          dispatch({
-            type: "NOT_FOUND",
-            payload: ["not_found"]
-          });
+            this.setState({
+              trackTitle: ""
+            });
+          } else {
+            dispatch({
+              type: "NOT_FOUND",
+              payload: ["not_found"]
+            });
 
-          this.setState({
-            trackTitle: ""
-          });
-        }
-      })
-      .catch(err => console.log(err));
+            this.setState({
+              trackTitle: ""
+            });
+          }
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   render() {
+    const { dispatch, list_active, focused } = this.props.value;
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-
-          return (
-            <div className="card card-body mb-4 p-4">
-              <h1 className="display-4 text-center">
-                <i className="fas fa-music" /> Search for a Song
-              </h1>
-              <p className="lead text-center">Get the lyrics for any song</p>
-              <form onSubmit={e => this.findTrack(dispatch, e)}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    placeholder="Song title..."
-                    name="trackTitle"
-                    value={this.state.trackTitle}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <button className="btn btn-primary btn-lg btn-block mb-5">
-                  Get track lyrics
-                </button>
-              </form>
-            </div>
-          );
-        }}
-      </Consumer>
+      <div className="card card-body mb-4 p-4">
+        {focused || (
+          <header>
+            <h1 className="display-4 text-center">
+              <i className="fas fa-music" /> Search for a Song
+            </h1>
+            <p className="lead text-center">Get the lyrics for any song</p>
+          </header>
+        )}
+        <form onSubmit={e => this.findTrack(dispatch, list_active, e)}>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="Song title..."
+              name="trackTitle"
+              value={this.state.trackTitle}
+              onChange={this.handleChange}
+              onFocus={() => this.handleFocus(dispatch, focused)}
+            />
+          </div>
+          <button className="btn btn-primary btn-lg btn-block mb-5">
+            Get track lyrics
+          </button>
+        </form>
+      </div>
     );
   }
 }

@@ -1,13 +1,20 @@
 import React from "react";
+import { Consumer } from "../../context";
 import Tracks from "../Track/Tracks";
 import Search from "../../containers/Search/Search";
 
-const Index = () => {
+const Index = props => {
   return (
-    <React.Fragment>
-      <Search />
-      <Tracks />
-    </React.Fragment>
+    <Consumer>
+      {value => {
+        return (
+          <React.Fragment>
+            <Search value={value} {...props} />
+            {value.list_active && <Tracks />}
+          </React.Fragment>
+        );
+      }}
+    </Consumer>
   );
 };
 

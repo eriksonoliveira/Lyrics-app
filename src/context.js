@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+//import axios from "axios";
 
 const Context = React.createContext();
 
@@ -16,6 +16,23 @@ const reducer = (state, action) => {
         ...state,
         tracks_list: action.payload
       };
+    case "HIDE_LIST":
+      return {
+        ...state,
+        tracks_list: action.payload,
+        list_active: false,
+        focused: false
+      };
+    case "SHOW_LIST":
+      return {
+        ...state,
+        list_active: true
+      };
+    case "INPUT_FOCUS":
+      return {
+        ...state,
+        focused: true
+      };
     case "NOT_FOUND":
       return {
         ...state,
@@ -28,24 +45,16 @@ const reducer = (state, action) => {
 };
 
 export class Provider extends Component {
-  state = {
-    tracks_list: [],
-    heading: "Top 10 Tracks",
-    dispatch: action => this.setState(state => reducer(state, action))
-  };
+  constructor() {
+    super();
 
-  componentDidMount() {
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=ca&f_has_lyrics=1&apikey=${
-          process.env.REACT_APP_MM_KEY
-        }`
-      )
-      .then(res => {
-        this.setState({ tracks_list: res.data.message.body.track_list });
-        // console.log(res.data);
-      })
-      .catch(err => console.log(err));
+    this.state = {
+      tracks_list: [],
+      heading: "Top 10 Tracks",
+      list_active: false,
+      focused: false,
+      dispatch: action => this.setState(state => reducer(state, action))
+    };
   }
 
   render() {

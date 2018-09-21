@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Moment from "react-moment";
 
 import { createURLArtist } from "../../spotify";
@@ -10,13 +9,17 @@ import SpotifyPlayer from "../../components/Player/SpotifyPlayer";
 import Lyrics from "../../components/Lyrics/Lyrics";
 
 class LyricsPage extends Component {
-  state = {
-    track: {},
-    lyrics: {},
-    artist: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      track: {},
+      lyrics: {},
+      artist: {}
+    };
+  }
 
   componentDidMount() {
+    this.props.changeActivePage("lyrics");
     // Getting lyrics and track info
     // track id comes from url through React router (props.match.params.id)
     axios
@@ -38,8 +41,6 @@ class LyricsPage extends Component {
         const track = res.data.message.body.track;
         this.setState({ track });
 
-        //console.log(track);
-
         // Get token and track info from spotify
         return axios.get("http://localhost:8888/token");
       })
@@ -49,8 +50,6 @@ class LyricsPage extends Component {
           this.state.track.artist_name,
           token.data.token
         );
-
-        // console.log(token.data.token);
 
         return axios.get(param.FETCH_URL, param.headers);
       })
@@ -84,21 +83,14 @@ class LyricsPage extends Component {
     ) {
       return <Spinner />;
     } else {
-      //console.log(lyrics);
       return (
         <React.Fragment>
-          <Link to="/" className="btn btn-dark btn-sm mb-4">
-            Go Back
-          </Link>
-
           <div className="card">
             <h5 className="card-header">
               {track.track_name} by{" "}
               <span className="text-secondary">{track.artist_name}</span>
             </h5>
-            <div className="card-body">
-              <Lyrics lyrics_body={lyrics.lyrics_body} />
-            </div>
+            <Lyrics lyrics_body={lyrics.lyrics_body} />
           </div>
 
           <ul className="list-group mt-3">
