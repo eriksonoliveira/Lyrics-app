@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Form from "./Form";
+import Header from "../../components/Header/Header";
 
 class Search extends Component {
   constructor(props) {
@@ -8,8 +10,7 @@ class Search extends Component {
       trackTitle: ""
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
+    this.handleEvent = this.handleEvent.bind(this);
     this.findTrack = this.findTrack.bind(this);
   }
 
@@ -17,17 +18,22 @@ class Search extends Component {
     this.props.changeActivePage("home");
   }
 
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
-  handleFocus(dispatch) {
-    dispatch({
-      type: "INPUT_FOCUS",
-      payload: []
-    });
+  handleEvent(action) {
+    switch (action.type) {
+      case "CHANGE":
+        return this.setState({
+          [action.param.target.name]: action.param.target.value
+        });
+      case "FOCUS":
+        return action.param({
+          type: "INPUT_FOCUS",
+          payload: []
+        });
+      case "RESET":
+        return this.setState({ trackTitle: "" });
+      default:
+        return console.warn(`No case for event type "${action.type}"`);
+    }
   }
 
   findTrack(dispatch, list_active, e) {
@@ -44,7 +50,7 @@ class Search extends Component {
     if (this.state.trackTitle.length > 0) {
       axios
         .get(
-          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${
+          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=${
             this.state.trackTitle
           }&page_size=10&page=1&s_track_rating=desc&apikey=${
             process.env.REACT_APP_MM_KEY
@@ -56,18 +62,10 @@ class Search extends Component {
               type: "SEARCH_TRACKS",
               payload: res.data.message.body.track_list
             });
-
-            this.setState({
-              trackTitle: ""
-            });
           } else {
             dispatch({
               type: "NOT_FOUND",
               payload: ["not_found"]
-            });
-
-            this.setState({
-              trackTitle: ""
             });
           }
         })
@@ -76,33 +74,14 @@ class Search extends Component {
   }
 
   render() {
-    const { dispatch, list_active, focused } = this.props.value;
     return (
       <div className="card card-body mb-4 p-4">
-        {focused || (
-          <header>
-            <h1 className="display-4 text-center">
-              <i className="fas fa-music" /> Search for a Song
-            </h1>
-            <p className="lead text-center">Get the lyrics for any song</p>
-          </header>
-        )}
-        <form onSubmit={e => this.findTrack(dispatch, list_active, e)}>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Song title..."
-              name="trackTitle"
-              value={this.state.trackTitle}
-              onChange={this.handleChange}
-              onFocus={() => this.handleFocus(dispatch, focused)}
-            />
-          </div>
-          <button className="btn btn-primary btn-lg btn-block mb-5">
-            Get track lyrics
-          </button>
-        </form>
+        <Header />
+        <Form
+          {...this.state}
+          findTrack={this.findTrack}
+          handleEvent={this.handleEvent}
+        />
       </div>
     );
   }

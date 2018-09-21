@@ -8,8 +8,7 @@ import MenuButton from "../Button/MenuButton";
 const Topbar = props => {
   return (
     <Consumer>
-      {context => {
-        const { focused, dispatch } = context;
+      {({ focused, dispatch, ...context }) => {
         return (
           <Navbar>
             <React.Fragment>

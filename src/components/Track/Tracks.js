@@ -8,8 +8,7 @@ class Tracks extends Component {
   render() {
     return (
       <Consumer>
-        {value => {
-          const { tracks_list, heading } = value;
+        {({ tracks_list, heading, ...context }) => {
           if (tracks_list === undefined || tracks_list.length === 0) {
             // Result is pending, render the spinner
             return <Spinner />;

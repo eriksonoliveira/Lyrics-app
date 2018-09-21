@@ -73,7 +73,6 @@ class LyricsPage extends Component {
   render() {
     const { track, lyrics, artist } = this.state;
 
-    // console.log(track);
     if (
       track === undefined ||
       lyrics === undefined ||
