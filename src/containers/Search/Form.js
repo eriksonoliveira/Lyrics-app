@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 
+import "./Form.css";
+
 export class Form extends Component {
   render() {
     return (
@@ -8,12 +10,13 @@ export class Form extends Component {
         {({ dispatch, list_active, focused, ...context }) => {
           return (
             <form
+              className="search-form"
               onSubmit={e => this.props.findTrack(dispatch, list_active, e)}
             >
-              <div className="form-group">
+              <div className="search-form-input-wrap">
                 <input
                   type="text"
-                  className="form-control form-control-lg"
+                  className="search-form-input"
                   placeholder="Song title..."
                   name="trackTitle"
                   value={this.props.trackTitle}
@@ -25,17 +28,19 @@ export class Form extends Component {
                   }
                 />
                 <button
+                  className="search-form-reset"
                   type="reset"
                   onClick={() => this.props.handleEvent({ type: "RESET" })}
                 >
                   &times;
                 </button>
               </div>
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg btn-block mb-5"
-              >
-                Get track lyrics
+              <button type="submit" className="search-form-submit btn">
+                <img
+                  className="search-form-submit-icon"
+                  src={require("./Images/search-icon.png")}
+                  alt="Search"
+                />
               </button>
             </form>
           );

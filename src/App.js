@@ -28,20 +28,22 @@ class App extends Component {
       <Provider>
         <Router>
           <React.Fragment>
-            <Topbar {...this.state} />
-            <div className="container">
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Index {...this.state} />}
-                />
-                <Route
-                  exact
-                  path="/lyrics/track/:id"
-                  render={props => <LyricsPage {...props} {...this.state} />}
-                />
-              </Switch>
+            <div className="app">
+              <Topbar {...this.state} />
+              <main className="container">
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Index {...this.state} />}
+                  />
+                  <Route
+                    exact
+                    path="/lyrics/track/:id"
+                    render={props => <LyricsPage {...props} {...this.state} />}
+                  />
+                </Switch>
+              </main>
             </div>
           </React.Fragment>
         </Router>

@@ -1,0 +1,8 @@
+.navbar {
+  background-color: rgba(40, 45, 79, 0.25);
+  height: 60px;
+}
+
+.navbar-menu-btn {
+  height: 15px;
+}

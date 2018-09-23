@@ -75,7 +75,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="card card-body mb-4 p-4">
+      <div className="mb-4 pt-4">
         <Header />
         <Form
           {...this.state}
