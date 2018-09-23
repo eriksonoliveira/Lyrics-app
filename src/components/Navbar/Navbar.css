@@ -3,6 +3,10 @@
   height: 60px;
 }
 
-.navbar-menu-btn {
+.navbar-btn {
+  cursor: pointer;
+}
+
+.navbar-btn-icon {
   height: 15px;
 }

@@ -30,7 +30,7 @@ class App extends Component {
           <React.Fragment>
             <div className="app">
               <Topbar {...this.state} />
-              <main className="container">
+              <main className="app-main-content container">
                 <Switch>
                   <Route
                     exact

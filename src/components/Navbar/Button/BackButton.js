@@ -3,16 +3,25 @@ import { Link } from "react-router-dom";
 
 const BackButton = props => {
   const { activePage, dispatch } = props;
+  const icon = (
+    <img
+      className="navbar-btn-icon"
+      src={require("./Images/back-icon.png")}
+      alt="back"
+      style={{ height: 15 }}
+    />
+  );
+
   return activePage === "home" ? (
-    <button
-      className="btn btn-dark btn-sm mb-4"
+    <span
+      className="navbar-btn"
       onClick={() => dispatch({ type: "HIDE_LIST", payload: [] })}
     >
-      back
-    </button>
+      {icon}
+    </span>
   ) : (
-    <Link to="/" className="btn btn-dark btn-sm mb-4">
-      Go Back
+    <Link to="/" className="navbar-btn">
+      {icon}
     </Link>
   );
 };

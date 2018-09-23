@@ -19,6 +19,7 @@ export class Form extends Component {
                   className="search-form-input"
                   placeholder="Song title..."
                   name="trackTitle"
+                  required="required"
                   value={this.props.trackTitle}
                   onChange={e =>
                     this.props.handleEvent({ type: "CHANGE", param: e })
@@ -31,9 +32,7 @@ export class Form extends Component {
                   className="search-form-reset"
                   type="reset"
                   onClick={() => this.props.handleEvent({ type: "RESET" })}
-                >
-                  &times;
-                </button>
+                />
               </div>
               <button type="submit" className="search-form-submit btn">
                 <img

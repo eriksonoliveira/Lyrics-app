@@ -1,33 +1,47 @@
 .search-form {
   position: relative;
   top: 215px;
+  text-align: center;
   --color: #ff6c00;
   --form-height: 50px;
-  --border: 1.8px solid var(--color);
+  --border: 2px solid var(--color);
   --input-background: transparent;
 }
 
 .search-form-input-wrap {
+  width: 230px;
   display: inline-block;
+  position: relative;
 }
 
 .search-form-input {
+  width: 100%;
   height: var(--form-height);
-  width: 230px;
   border: var(--border);
   border-radius: 25px;
   background-color: var(--input-background);
   color: #eeeeee;
   font-size: 1rem;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1rem;
+  padding-right: 40px;
 }
 
 .search-form-reset {
+  height: 1rem;
   background-color: var(--input-background);
+  background-image: url("./Images/cancel-button.png");
+  background-size: cover;
   color: var(--color);
   border: none;
   cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: none;
+}
+
+input:valid ~ .search-form-reset {
+  display: block;
 }
 
 .search-form-submit {
