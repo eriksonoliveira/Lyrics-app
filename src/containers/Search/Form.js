@@ -17,7 +17,7 @@ export class Form extends Component {
                 <input
                   type="text"
                   className="search-form-input"
-                  placeholder="Song title..."
+                  placeholder="Search music..."
                   name="trackTitle"
                   required="required"
                   value={this.props.trackTitle}

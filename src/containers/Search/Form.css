@@ -1,3 +1,8 @@
+.search {
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
 .search-form {
   position: relative;
   top: 215px;
@@ -51,6 +56,7 @@ input:valid ~ .search-form-reset {
   border-radius: 25px;
   background-color: var(--input-background);
   line-height: 17px;
+  margin-top: -6px;
 }
 
 .search-form-submit-icon {

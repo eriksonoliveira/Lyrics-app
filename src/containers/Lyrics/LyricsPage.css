@@ -1,0 +1,41 @@
+.lyrics {
+  width: 280px;
+  margin: auto;
+  padding-top: 25px;
+  --margin-bottom: 4px;
+  --font-size: 0.8rem;
+  --color: #eeeeee;
+}
+
+.lyrics-track-name {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #ff6c00;
+  margin-bottom: var(--margin-bottom);
+}
+
+.lyrics-artist-album,
+.lyrics-release-date {
+  font-size: var(--font-size);
+  color: var(--color);
+  margin-bottom: var(--margin-bottom);
+}
+
+.lyrics-body {
+  height: 320px;
+  font-size: var(--font-size);
+  color: var(--color);
+  overflow-y: auto;
+  margin: 20px 0;
+  border-top: 1px solid rgba(158, 53, 90, 0.8);
+  border-bottom: 1px solid rgba(158, 53, 90, 0.8);
+}
+
+.lyrics-spotify-link {
+  text-align: center;
+}
+
+.lyrics-spotify-link > a {
+  text-decoration: underline;
+  color: #a0204c;
+}

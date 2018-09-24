@@ -4,6 +4,8 @@ import { Consumer } from "../../context";
 import Spinner from "../Spinner/Spinner";
 import Track from "./Track";
 
+import "./Track.css";
+
 class Tracks extends Component {
   render() {
     return (
@@ -17,14 +19,11 @@ class Tracks extends Component {
             return <h3 className="text-center mb-4">{heading}</h3>;
           } else {
             return (
-              <React.Fragment>
-                <h3 className="text-center mb-4">{heading}</h3>
-                <div className="row">
-                  {tracks_list.map(item => (
-                    <Track key={item.track.track_id} track={item.track} />
-                  ))}
-                </div>
-              </React.Fragment>
+              <div className="tracks-list">
+                {tracks_list.map(item => (
+                  <Track key={item.track.track_id} track={item.track} />
+                ))}
+              </div>
             );
           }
         }}

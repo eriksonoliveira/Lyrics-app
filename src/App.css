@@ -11,15 +11,22 @@
 }
 
 .app {
-  width: 100%;
+  width: inherit;
   height: 100%;
   background-color: var(--app-background-color);
-  background-image: url("./Images/waves-headphone.png");
+  background-image: url("./Images/headphones-waves.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: 0 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
+  display: block;
 }
 
 .app-main-content {
+  width: inherit;
   background-color: transparent;
+  position: relative;
+  top: 60px;
 }

@@ -4,8 +4,8 @@ const Lyrics = props => {
   const lyrics_body = props.lyrics_body.split("\n");
 
   return (
-    <div className="card-body">
-      <div className="card-text text-left">
+    <div className="lyrics-body">
+      <div className="lyrics-text text-left">
         {lyrics_body.map((phrase, index) => {
           return (
             <p key={`${phrase.slice(0, 4)}-${index}`} className="my-1">

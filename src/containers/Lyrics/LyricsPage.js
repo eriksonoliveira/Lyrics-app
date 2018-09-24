@@ -8,6 +8,8 @@ import Spinner from "../../components/Spinner/Spinner";
 import SpotifyPlayer from "../../components/Player/SpotifyPlayer";
 import Lyrics from "../../components/Lyrics/Lyrics";
 
+import "./LyricsPage.css";
+
 class LyricsPage extends Component {
   constructor(props) {
     super(props);
@@ -83,49 +85,28 @@ class LyricsPage extends Component {
       return <Spinner />;
     } else {
       return (
-        <React.Fragment>
-          <div className="card">
-            <h5 className="card-header">
-              {track.track_name} by{" "}
-              <span className="text-secondary">{track.artist_name}</span>
-            </h5>
-            <Lyrics lyrics_body={lyrics.lyrics_body} />
+        <div className="lyrics">
+          <h1 className="lyrics-track-name">{track.track_name}</h1>
+          <h2 className="lyrics-artist-album">{`${track.artist_name} - ${
+            track.album_name
+          }`}</h2>
+          <h2 className="lyrics-release-date">
+            <Moment format="YYYY">{track.first_release_date}</Moment>
+          </h2>
+          <Lyrics lyrics_body={lyrics.lyrics_body} />
+          <div>
+            <SpotifyPlayer artist_id={artist.id} />
           </div>
-
-          <ul className="list-group mt-3">
-            <li className="list-group-item">
-              <strong>Album ID</strong>: {track.album_id}
-            </li>
-            <li className="list-group-item">
-              <strong>Song Genre</strong>:{" "}
-              {track.primary_genres.music_genre_list.length !== 0
-                ? track.primary_genres.music_genre_list[0].music_genre
-                    .music_genre_name
-                : "N/A"}
-            </li>
-            <li className="list-group-item">
-              <strong>Explicit Words</strong>:{" "}
-              {track.explicit === 0 ? "No" : "Yes"}
-            </li>
-            <li className="list-group-item">
-              <strong>Release Date</strong>:{" "}
-              <Moment format="MM/DD/YYYY">{track.first_release_date}</Moment>
-            </li>
-            <li className="list-group-item">
-              <SpotifyPlayer artist_id={artist.id} />
-            </li>
-            <li className="list-group-item">
-              <a
-                className="btn btn-success btn-lg"
-                href={artist.external_urls.spotify}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Listen on <strong>Spotify</strong>
-              </a>
-            </li>
-          </ul>
-        </React.Fragment>
+          <div className="lyrics-spotify-link">
+            <a
+              href={artist.external_urls.spotify}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Listen on <strong>Spotify</strong>
+            </a>
+          </div>
+        </div>
       );
     }
   }

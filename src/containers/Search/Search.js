@@ -75,7 +75,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="mb-4 pt-4">
+      <div className="search">
         <Header />
         <Form
           {...this.state}

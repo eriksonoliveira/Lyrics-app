@@ -1,0 +1,30 @@
+.tracks-list {
+  width: 280px;
+  margin: auto;
+}
+
+.track {
+  border-bottom: 1px solid rgba(158, 53, 90, 0.8);
+}
+
+.track *:hover {
+  text-decoration: none;
+}
+
+.track-link {
+  display: inline-block;
+  margin: 13px 0;
+}
+
+.track-name {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #ff6c00;
+  margin-bottom: 0;
+}
+
+.track-artist-album {
+  font-size: 0.9rem;
+  color: #eeeeee;
+  margin-bottom: 0;
+}
