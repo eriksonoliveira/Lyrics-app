@@ -7,6 +7,11 @@
   height: 680px;
   margin: auto;
   overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
   /* --app-background-color: rgb(26, 12, 43); Not available in IE */
 }
 
