@@ -1,6 +1,11 @@
 import React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 
+const scrollbarStyle = {
+  backgroundColor: "rgba(142, 135, 150, 0.7)",
+  borderRadius: 2
+}
+
 const Lyrics = props => {
   const lyrics_body = props.lyrics_body.split("\n");
 
@@ -10,10 +15,7 @@ const Lyrics = props => {
         renderThumbVertical={props => (
           <div
             {...props}
-            style={{
-              backgroundColor: "rgba(142, 135, 150, 0.7)",
-              borderRadius: 2
-            }}
+            style={scrollbarStyle}
           />
         )}
       >
