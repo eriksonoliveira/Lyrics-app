@@ -1,10 +1,13 @@
 .tracks-list {
   width: 280px;
   margin: auto;
+  height: 500px;
+  overflow-y: auto;
 }
 
 .track {
   border-bottom: 1px solid rgba(158, 53, 90, 0.8);
+  margin-right: 10px;
 }
 
 .track *:hover {
@@ -27,4 +30,9 @@
   font-size: 0.9rem;
   color: #eeeeee;
   margin-bottom: 0;
+}
+
+.thumb-vertical {
+  background-color: rgba(142, 135, 150, 0.7);
+  border-radius: 2px;
 }

@@ -9,7 +9,7 @@ const Index = props => {
       {context => {
         return (
           <React.Fragment>
-            <Search {...props} />
+            <Search {...props} trackTitle={context.trackTitle} />
             {context.list_active && <Tracks />}
           </React.Fragment>
         );

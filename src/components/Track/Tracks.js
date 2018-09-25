@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
+import { Scrollbars } from "react-custom-scrollbars";
 
 import Spinner from "../Spinner/Spinner";
 import Track from "./Track";
@@ -20,9 +21,15 @@ class Tracks extends Component {
           } else {
             return (
               <div className="tracks-list">
-                {tracks_list.map(item => (
-                  <Track key={item.track.track_id} track={item.track} />
-                ))}
+                <Scrollbars
+                  renderThumbVertical={props => (
+                    <div {...props} className="thumb-vertical" />
+                  )}
+                >
+                  {tracks_list.map(item => (
+                    <Track key={item.track.track_id} track={item.track} />
+                  ))}
+                </Scrollbars>
               </div>
             );
           }

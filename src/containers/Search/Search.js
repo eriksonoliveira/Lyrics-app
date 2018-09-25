@@ -6,9 +6,9 @@ import Header from "../../components/Header/Header";
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      trackTitle: ""
-    };
+    // this.state = {
+    //   trackTitle: ""
+    // };
 
     this.handleEvent = this.handleEvent.bind(this);
     this.findTrack = this.findTrack.bind(this);
@@ -21,8 +21,12 @@ class Search extends Component {
   handleEvent(action) {
     switch (action.type) {
       case "CHANGE":
-        return this.setState({
-          [action.param.target.name]: action.param.target.value
+        // return this.setState({
+        //   [action.param.target.name]: action.param.target.value
+        // });
+        return action.param({
+          type: "CHANGE_TRACK",
+          payload: action.event.target.value
         });
       case "FOCUS":
         return action.param({
@@ -30,7 +34,10 @@ class Search extends Component {
           payload: []
         });
       case "RESET":
-        return this.setState({ trackTitle: "" });
+        // return this.setState({ trackTitle: "" });
+        return action.param({
+          type: "RESET_INPUT"
+        });
       default:
         return console.warn(`No case for event type "${action.type}"`);
     }
@@ -47,11 +54,13 @@ class Search extends Component {
       payload: []
     });
 
-    if (this.state.trackTitle.length > 0) {
+    // if (this.state.trackTitle.length > 0) {
+    if (this.props.trackTitle.length > 0) {
       axios
         .get(
           `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=${
-            this.state.trackTitle
+            this.props.trackTitle
+            // this.state.trackTitle
           }&page_size=10&page=1&s_track_rating=desc&apikey=${
             process.env.REACT_APP_MM_KEY
           }`

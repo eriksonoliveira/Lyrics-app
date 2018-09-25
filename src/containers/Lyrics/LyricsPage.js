@@ -43,6 +43,8 @@ class LyricsPage extends Component {
         const track = res.data.message.body.track;
         this.setState({ track });
 
+        console.log(track);
+
         // Get token and track info from spotify
         return axios.get("http://localhost:8888/token");
       })
@@ -66,7 +68,7 @@ class LyricsPage extends Component {
             artist: { id: 0, external_urls: { spotify: "https://spotify.com" } }
           });
 
-          console.log(json);
+          // console.log(json);
         }
       })
       .catch(err => console.log(err));

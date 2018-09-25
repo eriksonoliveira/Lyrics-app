@@ -1,12 +1,12 @@
 .search {
-  margin-top: 40px;
-  margin-bottom: 25px;
+  height: 100px;
 }
 
 .search-form {
   position: relative;
   top: 215px;
   text-align: center;
+  transition: top 0.4s;
   --color: #ff6c00;
   --form-height: 50px;
   --border: 2px solid var(--color);
@@ -31,10 +31,16 @@
   padding-right: 40px;
 }
 
+.search-form-input:focus {
+  box-shadow: 0 0 5px var(--color);
+}
+
 .search-form-reset {
   height: 1rem;
+  width: 1rem;
   background-color: var(--input-background);
   background-image: url("./Images/cancel-button.png");
+  -webkit-background-size: cover;
   background-size: cover;
   color: var(--color);
   border: none;
@@ -62,4 +68,20 @@ input:valid ~ .search-form-reset {
 .search-form-submit-icon {
   height: 21px;
   width: auto;
+}
+
+.animate-entering {
+  top: 215px;
+}
+
+.animate-entered {
+  top: -80px;
+}
+
+.animate-exiting {
+  top: -80px;
+}
+
+.animate-exited {
+  top: 215px;
 }
