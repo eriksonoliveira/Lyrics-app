@@ -2,8 +2,9 @@ import React from "react";
 
 const SpotifyPlayer = props => {
   const iframeStyle = {
-    width: "90%",
-    height: 80
+    width: 280,
+    height: 80,
+    border: "2px solid #BBBBBB"
   };
 
   if (props.artist_id === 0) {

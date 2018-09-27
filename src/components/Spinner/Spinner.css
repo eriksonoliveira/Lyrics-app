@@ -1,17 +1,65 @@
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 80px;
+  margin: auto;
+  border-radius: 50%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  /* ms ( IE 10.0+ ) */
+  background: -ms-linear-gradient(
+    0deg,
+    rgba(255, 108, 0, 1) 0.14%,
+    rgba(160, 32, 76, 1) 99.61%
+  );
+
+  /* WebKit (Chrome 10.0+, safari 5.1+ )*/
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(255, 108, 0, 1) 0.14%,
+    rgba(160, 32, 76, 1) 99.61%
+  );
+
+  /* Moz ( Moz 3.6+ )*/
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(255, 108, 0, 1) 0.14%,
+    rgba(160, 32, 76, 1) 99.61%
+  );
+
+  /* Opera ( opera 11.6+ )*/
+  background: -o-linear-gradient(
+    0deg,
+    rgba(255, 108, 0, 1) 0.14%,
+    rgba(160, 32, 76, 1) 99.61%
+  );
+
+  /* W3C Markup */
+  background: linear-gradient(
+    0deg,
+    rgba(255, 108, 0, 1) 0.14%,
+    rgba(160, 32, 76, 1) 99.61%
+  );
+}
+
+.spinner::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: rgb(26, 12, 43);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+}
+
 @keyframes spin {
   0% {
-    transform: rotate(0deg);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-.spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  margin: auto;
-  animation: spin 1.5s linear infinite;
 }

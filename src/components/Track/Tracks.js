@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
+import { Scrollbars } from "react-custom-scrollbars";
 
 import Spinner from "../Spinner/Spinner";
 import Track from "./Track";
+
+import "./Track.css";
 
 class Tracks extends Component {
   render() {
@@ -17,14 +20,17 @@ class Tracks extends Component {
             return <h3 className="text-center mb-4">{heading}</h3>;
           } else {
             return (
-              <React.Fragment>
-                <h3 className="text-center mb-4">{heading}</h3>
-                <div className="row">
+              <div className="tracks-list">
+                <Scrollbars
+                  renderThumbVertical={props => (
+                    <div {...props} className="thumb-vertical" />
+                  )}
+                >
                   {tracks_list.map(item => (
                     <Track key={item.track.track_id} track={item.track} />
                   ))}
-                </div>
-              </React.Fragment>
+                </Scrollbars>
+              </div>
             );
           }
         }}

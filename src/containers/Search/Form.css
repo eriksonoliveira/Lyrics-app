@@ -1,0 +1,100 @@
+.search {
+  height: 100px;
+}
+
+.search-form {
+  position: relative;
+  top: 210px;
+  text-align: center;
+  transition: top 0.4s;
+  /* --color: #ff6c00; */
+  /* --form-height: 50px; */
+  /* --border: 2px solid var(--color); */
+  /* --input-background: transparent; */
+}
+
+.search-form-input-wrap {
+  width: 230px;
+  display: inline-block;
+  position: relative;
+}
+
+.search-form-input {
+  width: 100%;
+  height: 50px;
+  /* height: var(--form-height); */
+  border: 2px solid #ff6c00;
+  /* border: var(--border); */
+  border-radius: 25px;
+  background-color: transparent;
+  /* background-color: var(--input-background); */
+  color: #eeeeee;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 40px;
+}
+
+.search-form-input:focus {
+  box-shadow: 0 0 5px var(--color);
+}
+
+.search-form-input::-ms-clear {
+  display: none;
+}
+
+.search-form-reset {
+  height: 1rem;
+  width: 1rem;
+  background-color: transparent;
+  /* background-color: var(--input-background); */
+  background-image: url("./Images/cancel-button.png");
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: #ff6c00;
+  /* color: var(--color); */
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: none;
+}
+
+input:valid ~ .search-form-reset {
+  display: block;
+}
+
+.search-form-submit {
+  width: 50px;
+  height: 50px;
+  /* height: var(--form-height); */
+  /* width: var(--form-height); */
+  border: 2px solid #ff6c00;
+  /* border: var(--border); */
+  border-radius: 25px;
+  background-color: transparent;
+  /* background-color: var(--input-background); */
+  line-height: 17px;
+  margin-top: -6px;
+}
+
+.search-form-submit-icon {
+  height: 21px;
+  width: auto;
+}
+
+.animate-entering {
+  top: 210px;
+}
+
+.animate-entered {
+  top: -85px;
+}
+
+.animate-exiting {
+  top: -85px;
+}
+
+.animate-exited {
+  top: 210px;
+}

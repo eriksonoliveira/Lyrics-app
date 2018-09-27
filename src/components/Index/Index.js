@@ -6,11 +6,11 @@ import Search from "../../containers/Search/Search";
 const Index = props => {
   return (
     <Consumer>
-      {value => {
+      {context => {
         return (
           <React.Fragment>
-            <Search value={value} {...props} />
-            {value.list_active && <Tracks />}
+            <Search {...props} trackTitle={context.trackTitle} />
+            {context.list_active && <Tracks />}
           </React.Fragment>
         );
       }}

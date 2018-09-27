@@ -1,0 +1,67 @@
+.navbar {
+  width: inherit;
+  background-color: #22163a;
+  /* background-color: rgba(40, 45, 79, 0.25); */
+  height: 60px;
+  position: absolute;
+  z-index: 2;
+}
+
+.navbar-btn {
+  cursor: pointer;
+}
+
+.navbar-btn-icon {
+  height: 15px;
+}
+
+.menu {
+  height: 680px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.bm-menu-wrap {
+  width: 250px !important;
+}
+
+.menu > div,
+.bm-menu-wrap,
+.bm-overlay {
+  height: inherit !important;
+  position: absolute !important;
+}
+
+.bm-overlay {
+  width: 350px !important;
+}
+
+.bm-burger-button {
+  width: 26px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+
+.bm-burger-button > img {
+  vertical-align: baseline;
+}
+
+.bm-menu {
+  background-color: rgb(26, 12, 43);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  border-right: 1px solid #ff6c00;
+}
+
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.bm-item {
+  color: #eeeeee;
+  display: inline-block;
+}

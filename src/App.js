@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Topbar from "./components/Navbar/Topbar";
 import Index from "./components/Index/Index";
-import LyricsPage from "./containers/Lyrics/LyricsPage";
+import Lyrics from "./containers/Lyrics/Lyrics";
 
 import { Provider } from "./context";
 
@@ -28,20 +28,22 @@ class App extends Component {
       <Provider>
         <Router>
           <React.Fragment>
-            <Topbar {...this.state} />
-            <div className="container">
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Index {...this.state} />}
-                />
-                <Route
-                  exact
-                  path="/lyrics/track/:id"
-                  render={props => <LyricsPage {...props} {...this.state} />}
-                />
-              </Switch>
+            <div className="app">
+              <Topbar {...this.state} />
+              <main className="app-main-content">
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Index {...this.state} />}
+                  />
+                  <Route
+                    exact
+                    path="/lyrics/track/:id"
+                    render={props => <Lyrics {...props} {...this.state} />}
+                  />
+                </Switch>
+              </main>
             </div>
           </React.Fragment>
         </Router>

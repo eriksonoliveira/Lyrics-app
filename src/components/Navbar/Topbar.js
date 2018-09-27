@@ -2,8 +2,10 @@ import React from "react";
 import { Consumer } from "../../context";
 
 import Navbar from "./Navbar";
-import BackButton from "../Button/BackButton";
-import MenuButton from "../Button/MenuButton";
+import BackButton from "./Button/BackButton";
+import MenuButton from "./Button/MenuButton";
+
+import "./Navbar.css";
 
 const Topbar = props => {
   return (

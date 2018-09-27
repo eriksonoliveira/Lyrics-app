@@ -21,7 +21,8 @@ const reducer = (state, action) => {
         ...state,
         tracks_list: action.payload,
         list_active: false,
-        focused: false
+        focused: false,
+        trackTitle: ""
       };
     case "SHOW_LIST":
       return {
@@ -32,6 +33,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         focused: true
+      };
+    case "CHANGE_TRACK":
+      return {
+        ...state,
+        trackTitle: action.payload
+      };
+    case "RESET_INPUT":
+      return {
+        ...state,
+        trackTitle: ""
       };
     case "NOT_FOUND":
       return {
@@ -53,6 +64,7 @@ export class Provider extends Component {
       heading: "Top 10 Tracks",
       list_active: false,
       focused: false,
+      trackTitle: "",
       dispatch: action => this.setState(state => reducer(state, action))
     };
   }
