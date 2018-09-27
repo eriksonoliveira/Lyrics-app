@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Topbar from "./components/Navbar/Topbar";
 import Index from "./components/Index/Index";
-import LyricsPage from "./containers/Lyrics/LyricsPage";
+import Lyrics from "./containers/Lyrics/Lyrics";
 
 import { Provider } from "./context";
 
@@ -40,7 +40,7 @@ class App extends Component {
                   <Route
                     exact
                     path="/lyrics/track/:id"
-                    render={props => <LyricsPage {...props} {...this.state} />}
+                    render={props => <Lyrics {...props} {...this.state} />}
                   />
                 </Switch>
               </main>

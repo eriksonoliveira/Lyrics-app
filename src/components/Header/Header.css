@@ -1,6 +1,5 @@
 .header {
-  position: relative;
-  padding-top: 50px;
+  padding-top: 60px;
   opacity: 1;
   transition: all 300ms;
 }

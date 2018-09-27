@@ -4,7 +4,7 @@
 
 .search-form {
   position: relative;
-  top: 215px;
+  top: 210px;
   text-align: center;
   transition: top 0.4s;
   /* --color: #ff6c00; */
@@ -84,17 +84,17 @@ input:valid ~ .search-form-reset {
 }
 
 .animate-entering {
-  top: 215px;
+  top: 210px;
 }
 
 .animate-entered {
-  top: -80px;
+  top: -85px;
 }
 
 .animate-exiting {
-  top: -80px;
+  top: -85px;
 }
 
 .animate-exited {
-  top: 215px;
+  top: 210px;
 }

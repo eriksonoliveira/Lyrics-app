@@ -1,16 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Moment from "react-moment";
-
 import { createURLArtist } from "../../spotify";
-
+import "./Lyrics.css";
+import LyricsPage from "../../components/Lyrics/LyricsPage";
 import Spinner from "../../components/Spinner/Spinner";
-import SpotifyPlayer from "../../components/Player/SpotifyPlayer";
-import Lyrics from "../../components/Lyrics/Lyrics";
 
-import "./LyricsPage.css";
-
-class LyricsPage extends Component {
+class Lyrics extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,32 +81,9 @@ class LyricsPage extends Component {
     ) {
       return <Spinner />;
     } else {
-      return (
-        <div className="lyrics">
-          <h1 className="lyrics-track-name">{track.track_name}</h1>
-          <h2 className="lyrics-artist-album">{`${track.artist_name} - ${
-            track.album_name
-          }`}</h2>
-          <h2 className="lyrics-release-date">
-            <Moment format="YYYY">{track.first_release_date}</Moment>
-          </h2>
-          <Lyrics lyrics_body={lyrics.lyrics_body} />
-          <div>
-            <SpotifyPlayer artist_id={artist.id} />
-          </div>
-          <div className="lyrics-spotify-link">
-            <a
-              href={artist.external_urls.spotify}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Listen on <strong>Spotify</strong>
-            </a>
-          </div>
-        </div>
-      );
+      return <LyricsPage artist={artist} lyrics={lyrics} track={track} />;
     }
   }
 }
 
-export default LyricsPage;
+export default Lyrics;
