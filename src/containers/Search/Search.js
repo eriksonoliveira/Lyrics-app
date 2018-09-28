@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import key from "../../keys/keys_dev";
+import key from "../../keys/keys";
 
 import Form from "./Form";
 import Header from "../../components/Header/Header";
