@@ -5,7 +5,7 @@
 
 # evironmental variables
 .env
-keys_dev.js
+/keys
 
 # testing
 /coverage
