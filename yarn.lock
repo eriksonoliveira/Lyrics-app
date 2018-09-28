@@ -1129,6 +1129,12 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
+boom@7.x.x:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/boom/-/boom-7.2.0.tgz#2bff24a55565767fde869ec808317eb10c48e966"
+  dependencies:
+    hoek "5.x.x"
+
 boxen@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-1.3.0.tgz#55c6c39a8ba58d9c61ad22cd877532deb665a20b"
@@ -1695,24 +1701,16 @@ convert-source-map@^1.4.0, convert-source-map@^1.5.0, convert-source-map@^1.5.1:
   dependencies:
     safe-buffer "~5.1.1"
 
-cookie-parser@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.3.2.tgz#52211cc82c955d79ff0c088954407724e19cf562"
+cookie-parser@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.3.tgz#0fe31fa19d000b95f4aadf1f53fdc2b8a203baa5"
   dependencies:
-    cookie "0.1.2"
-    cookie-signature "1.0.4"
-
-cookie-signature@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.4.tgz#0edd22286e3a111b9a2a70db363e925e867f6aca"
+    cookie "0.3.1"
+    cookie-signature "1.0.6"
 
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
-
-cookie@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.1.2.tgz#72fec3d24e48a3432073d90c12642005061004b1"
 
 cookie@0.3.1:
   version "0.3.1"
@@ -1796,6 +1794,12 @@ cryptiles@3.x.x:
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-3.1.2.tgz#a89fbb220f5ce25ec56e8c4aa8a4fd7b5b0d29fe"
   dependencies:
     boom "5.x.x"
+
+cryptiles@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-4.1.2.tgz#363c9ab5c859da9d2d6fb901b64d980966181184"
+  dependencies:
+    boom "7.x.x"
 
 crypto-browserify@^3.11.0:
   version "3.12.0"
@@ -3332,6 +3336,10 @@ hmac-drbg@^1.0.0:
 hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
+
+hoek@5.x.x:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-5.0.4.tgz#0f7fa270a1cafeb364a4b2ddfaa33f864e4157da"
 
 hoist-non-react-statics@^2.5.0:
   version "2.5.5"
@@ -5830,7 +5838,7 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-burger-menu@^2.5.2:
+react-burger-menu@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/react-burger-menu/-/react-burger-menu-2.5.3.tgz#ead41e1a9ded879ddc16f45a1fe39d55e42be71f"
   dependencies:
@@ -5973,7 +5981,7 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react-transition-group@^2.4.0:
+react-transition-group@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.0.tgz#70bca0e3546102c4dc5cf3f5f57f73447cce6874"
   dependencies:
