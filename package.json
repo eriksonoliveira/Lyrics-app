@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "heroku-postbuild": "yarn && yarn run build"
   },
   "devDependencies": {
     "enzyme": "^3.6.0",
