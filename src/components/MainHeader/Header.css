@@ -1,7 +1,17 @@
+.main-header-name {
+  display: block;
+  font-size: 2rem;
+}
+
 .main-header-logo {
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
   border-radius: 25px;
   display: inline-block;
   margin: auto;
+}
+
+.main-header-text {
+  font-size: 1.3rem;
+  margin-top: 20px;
 }

@@ -27,25 +27,23 @@ class App extends Component {
     return (
       <Provider>
         <Router>
-          <React.Fragment>
-            <div className="app">
-              <Topbar {...this.state} />
-              <main className="app-main-content">
-                <Switch>
-                  <Route
-                    exact
-                    path="/"
-                    render={() => <Index {...this.state} />}
-                  />
-                  <Route
-                    exact
-                    path="/lyrics/track/:id"
-                    render={props => <Lyrics {...props} {...this.state} />}
-                  />
-                </Switch>
-              </main>
-            </div>
-          </React.Fragment>
+          <div className="app">
+            <Topbar {...this.state} />
+            <main className="app-main-content">
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={() => <Index {...this.state} />}
+                />
+                <Route
+                  exact
+                  path="/lyrics/track/:id"
+                  render={props => <Lyrics {...props} {...this.state} />}
+                />
+              </Switch>
+            </main>
+          </div>
         </Router>
       </Provider>
     );
