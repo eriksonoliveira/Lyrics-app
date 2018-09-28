@@ -6,11 +6,14 @@ import Search from "../../containers/Search/Search";
 const Index = props => {
   return (
     <Consumer>
-      {context => {
+      {({ trackTitle, changeActivePage, list_active }) => {
         return (
           <React.Fragment>
-            <Search {...props} trackTitle={context.trackTitle} />
-            {context.list_active && <Tracks />}
+            <Search
+              trackTitle={trackTitle}
+              changeActivePage={changeActivePage}
+            />
+            {list_active && <Tracks />}
           </React.Fragment>
         );
       }}

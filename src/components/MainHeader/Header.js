@@ -7,9 +7,10 @@ const Header = () => {
       <img
         className="main-header-logo"
         src={require("../../Images/Logo-LyricsFinder.svg")}
-        alt="Logo"
+        alt="Logo Lyrics Finder"
       />
-      <h1>Find lyrics and sing along</h1>
+      <h1 className="main-header-name">Lyrics Finder</h1>
+      <h2 className="main-header-text">Find lyrics and sing along</h2>
     </div>
   );
 };

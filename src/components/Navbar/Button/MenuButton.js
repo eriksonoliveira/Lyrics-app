@@ -13,24 +13,12 @@ const MenuButton = () => {
           />
         }
       >
-        <a id="home" className="menu-item" href="/">
-          Home
-        </a>
-        <a id="about" className="menu-item" href="/about">
+        <a id="about" className="menu-item" href="/">
           About
         </a>
       </Menu>
     </div>
   );
-  // return (
-  //   <span className="navbar-btn">
-  //     <img
-  //       className="navbar-btn-icon"
-  //       src={require("./Images/menu-icon.png")}
-  //       alt="Menu"
-  //     />
-  //   </span>
-  // );
 };
 
 export default MenuButton;

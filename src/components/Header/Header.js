@@ -7,7 +7,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <Consumer>
-      {({ focused, ...context }) => {
+      {({ focused }) => {
         return (
           <Transition in={focused} timeout={300}>
             {status => (

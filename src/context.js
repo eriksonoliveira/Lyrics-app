@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import axios from "axios";
 
 const Context = React.createContext();
 
@@ -65,9 +64,15 @@ export class Provider extends Component {
       list_active: false,
       focused: false,
       trackTitle: "",
+      activePage: "",
+      changeActivePage: this.changeActivePage,
       dispatch: action => this.setState(state => reducer(state, action))
     };
   }
+
+  changeActivePage = activePage => {
+    this.setState({ activePage });
+  };
 
   render() {
     return (

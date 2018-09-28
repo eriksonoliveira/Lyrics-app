@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 const BackButton = props => {
   const { activePage, dispatch } = props;
+
+  console.log(activePage);
+
   const icon = (
     <img
       className="navbar-btn-icon"
