@@ -133,6 +133,8 @@ app.get("/refresh_token", function(req, res) {
 
 //Get token using Client Credentials method
 app.get("/token", (req, res) => {
+  console.log("test");
+
   // your application requests authorization
   var authOptions = {
     url: "https://accounts.spotify.com/api/token",
