@@ -4,9 +4,11 @@ var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
 
+const port = process.env.PORT || 8888;
+
 var client_id = "fce411bc6d7640f0b3d4b38569b217fe"; // Your client id
 var client_secret = "d609398a9eb34f6ebe7111236e55ec75"; // Your secret
-var redirect_uri = "http://localhost:8888/callback/"; // Your redirect uri
+var redirect_uri = "https://serene-wildwood-99376.herokuapp.com/callback/"; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -61,7 +63,7 @@ app.get("/callback", function(req, res) {
 
   if (state === null || state !== storedState) {
     res.redirect(
-      "http://localhost:3000/" +
+      "https://serene-wildwood-99376.herokuapp.com/" +
         querystring.stringify({
           error: "state_mismatch"
         })
@@ -91,7 +93,7 @@ app.get("/callback", function(req, res) {
         res.send({ access_token: access_token });
       } else {
         res.redirect(
-          "http://localhost:3000/#" +
+          "https://serene-wildwood-99376.herokuapp.com/#" +
             querystring.stringify({
               error: "invalid_token"
             })
@@ -153,5 +155,5 @@ app.get("/token", (req, res) => {
   });
 });
 
-console.log("Listening on 8888");
-app.listen(8888);
+console.log("Listening on " + port);
+app.listen(port);

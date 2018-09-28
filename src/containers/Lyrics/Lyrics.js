@@ -47,8 +47,8 @@ class Lyrics extends Component {
         console.log(track);
 
         // Get token and track info from spotify
-        // return axios.get("/token");
-        return axios.get("http://localhost:8888/token");
+        return axios.get("/token");
+        // return axios.get("http://localhost:8888/token");
       })
       .then(token => {
         const param = createURLArtist(
