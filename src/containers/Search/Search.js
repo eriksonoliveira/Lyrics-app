@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import key from "../../keys/keys_dev";
 import key from "../../keys/keys";
 
 import Form from "./Form";
@@ -51,12 +50,14 @@ class Search extends Component {
     });
 
     if (this.props.trackTitle.length > 0) {
+      // TEST KEY
+      console.log(key);
+
       axios
         .get(
           `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=${
             this.props.trackTitle
           }&page_size=10&page=1&s_track_rating=desc&apikey=${
-            // process.env.REACT_APP_MM_KEY
             key.musixmatchPublishableKey
           }`
         )
