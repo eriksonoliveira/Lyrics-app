@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { createURLArtist } from "../../spotify";
 // import key from "../../keys/keys_dev";
-import key from "../../keys/keys";
+// import key from "../../keys/keys";
 
 import "./Lyrics.css";
 
@@ -27,8 +27,8 @@ class Lyrics extends Component {
       .get(
         `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${
           this.props.match.params.id
-        }&apikey=${key.musixmatchPublishableKey}`
-        // }&apikey=${process.env.REACT_APP_MM_KEY}`
+          // }&apikey=${key.musixmatchPublishableKey}`
+        }&apikey=${process.env.REACT_APP_MM_KEY}`
       )
       .then(res => {
         this.setState({ lyrics: res.data.message.body.lyrics });
@@ -36,8 +36,8 @@ class Lyrics extends Component {
         return axios.get(
           `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.get?track_id=${
             this.props.match.params.id
-          }&apikey=${key.musixmatchPublishableKey}`
-          // }&apikey=${process.env.REACT_APP_MM_KEY}`
+            // }&apikey=${key.musixmatchPublishableKey}`
+          }&apikey=${process.env.REACT_APP_MM_KEY}`
         );
       })
       .then(res => {
