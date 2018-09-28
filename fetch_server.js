@@ -8,7 +8,8 @@ const port = process.env.PORT || 8888;
 
 var client_id = "fce411bc6d7640f0b3d4b38569b217fe"; // Your client id
 var client_secret = "d609398a9eb34f6ebe7111236e55ec75"; // Your secret
-var redirect_uri = "https://serene-wildwood-99376.herokuapp.com/callback/"; // Your redirect uri
+var redirect_uri =
+  "https://lyrics-finder-eriksonoliveira.herokuapp.com/callback/"; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -63,7 +64,7 @@ app.get("/callback", function(req, res) {
 
   if (state === null || state !== storedState) {
     res.redirect(
-      "https://serene-wildwood-99376.herokuapp.com/" +
+      "https://lyrics-finder-eriksonoliveira.herokuapp.com/" +
         querystring.stringify({
           error: "state_mismatch"
         })
@@ -93,7 +94,7 @@ app.get("/callback", function(req, res) {
         res.send({ access_token: access_token });
       } else {
         res.redirect(
-          "https://serene-wildwood-99376.herokuapp.com/#" +
+          "https://lyrics-finder-eriksonoliveira.herokuapp.com/#" +
             querystring.stringify({
               error: "invalid_token"
             })
