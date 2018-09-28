@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { createURLArtist } from "../../spotify";
-import key from "../../keys/keys_dev";
-// import key from "../../keys/keys";
+// import key from "../../keys/keys_dev";
+import key from "../../keys/keys";
 
 import "./Lyrics.css";
 
