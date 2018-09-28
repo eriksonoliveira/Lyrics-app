@@ -14,6 +14,6 @@ describe("Track component tests", () => {
     const component = shallow(<Track track={track} />);
 
     // expect
-    expect(component.find(".card")).toBeDefined();
+    expect(component.find(".track")).toBeDefined();
   });
 });

@@ -7,15 +7,16 @@ import MenuButton from "./Button/MenuButton";
 
 import "./Navbar.css";
 
-const Topbar = props => {
+const Topbar = () => {
   return (
     <Consumer>
-      {({ focused, dispatch, ...context }) => {
+      {({ focused, ...context }) => {
         return (
           <Navbar>
             <React.Fragment>
               {focused ? (
-                <BackButton activePage={props.activePage} dispatch={dispatch} />
+                // <BackButton activePage={props.activePage} {...context} />
+                <BackButton {...context} />
               ) : (
                 <MenuButton />
               )}

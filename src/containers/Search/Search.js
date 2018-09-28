@@ -77,11 +77,7 @@ class Search extends Component {
     return (
       <div className="search">
         <Header />
-        <Form
-          {...this.state}
-          findTrack={this.findTrack}
-          handleEvent={this.handleEvent}
-        />
+        <Form findTrack={this.findTrack} handleEvent={this.handleEvent} />
       </div>
     );
   }
