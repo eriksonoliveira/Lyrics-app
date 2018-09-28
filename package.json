@@ -29,6 +29,7 @@
     "heroku-postbuild": "yarn && yarn run build"
   },
   "devDependencies": {
+    "dotenv": "^6.0.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0"
   },
