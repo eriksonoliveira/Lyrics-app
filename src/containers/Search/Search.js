@@ -51,7 +51,7 @@ class Search extends Component {
 
     if (this.props.trackTitle.length > 0) {
       // TEST KEY
-      console.log(process.env.REACT_APP_MM_KEY);
+      console.log(process.env.REACT_APP_MUSIXMATCH_KEY);
 
       axios
         .get(
@@ -59,7 +59,8 @@ class Search extends Component {
             this.props.trackTitle
           }&page_size=10&page=1&s_track_rating=desc&apikey=${
             // key.musixmatchPublishableKey
-            process.env.REACT_APP_MM_KEY
+            // process.env.REACT_APP_MM_KEY
+            process.env.REACT_APP_MUSIXMATCH_KEY
           }`
         )
         .then(res => {
