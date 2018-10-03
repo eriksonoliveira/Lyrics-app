@@ -53,6 +53,8 @@ class Lyrics extends Component {
           token.data.token
         );
 
+        console.log(token);
+
         return axios.get(param.FETCH_URL, param.headers);
       })
       .then(json => {
