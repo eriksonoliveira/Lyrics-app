@@ -5,7 +5,6 @@
 
 # evironmental variables
 .env
-/keys
 
 # testing
 /coverage
