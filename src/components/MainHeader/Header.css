@@ -1,6 +1,10 @@
+.main-header {
+  margin: 150px auto 200px auto;
+  color: #ffffff;
+}
+
 .main-header-name {
   display: block;
-  font-size: 2rem;
 }
 
 .main-header-logo {
@@ -14,4 +18,55 @@
 .main-header-text {
   font-size: 1.3rem;
   margin-top: 20px;
+}
+
+.main-sub-header {
+  height: 100px;
+}
+
+.main-sub-header h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.main-sub-header-arrow {
+  color: rgba(160, 32, 76, 0.9);
+}
+
+.slide-right {
+  -webkit-animation: slide-right 1.8s ease-in-out infinite;
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .main-header {
+    margin: 50px auto 70px auto;
+  }
+
+  .main-sub-header-arrow {
+    display: none !important;
+  }
 }
