@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Topbar from "./components/Navbar/Topbar";
 import Index from "./components/Index/Index";
+import About from "./components/About/About";
 import LyricsWrapper from "./containers/Lyrics/LyricsWrapper";
 
 import { Provider } from "./context";
@@ -24,6 +25,7 @@ class App extends Component {
                   path="/lyrics/track/:id"
                   render={props => <LyricsWrapper {...props} />}
                 />
+                <Route exact path="/about" render={() => <About />} />
               </Switch>
             </main>
           </div>
