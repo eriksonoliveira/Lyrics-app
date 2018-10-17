@@ -1,5 +1,6 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
+import { Link } from "react-router-dom";
 
 const MenuButton = () => {
   return (
@@ -13,9 +14,9 @@ const MenuButton = () => {
           />
         }
       >
-        <a id="about" className="menu-item" href="/">
+        <Link id="about" className="menu-item" to="/About">
           About
-        </a>
+        </Link>
       </Menu>
     </div>
   );

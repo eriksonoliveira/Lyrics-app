@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
 import Form from "./Form";
@@ -80,19 +78,11 @@ class Search extends Component {
   }
 
   render() {
-    return ( <
-      div className = "search" >
-      <
-      Header / >
-      <
-      Form findTrack = {
-        this.findTrack
-      }
-      handleEvent = {
-        this.handleEvent
-      }
-      /> <
-      /div>
+    return (
+      <div className="search">
+        <Header />
+        <Form findTrack={this.findTrack} handleEvent={this.handleEvent} />
+      </div>
     );
   }
 }
