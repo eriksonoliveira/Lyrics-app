@@ -14,12 +14,7 @@ const Topbar = () => {
         return (
           <Navbar>
             <React.Fragment>
-              {focused ? (
-                // <BackButton activePage={props.activePage} {...context} />
-                <BackButton {...context} />
-              ) : (
-                <MenuButton />
-              )}
+              {focused ? <BackButton {...context} /> : <MenuButton />}
             </React.Fragment>
           </Navbar>
         );

@@ -33,6 +33,11 @@ const reducer = (state, action) => {
         ...state,
         focused: true
       };
+    case "REMOVE_FOCUS":
+      return {
+        ...state,
+        focused: false
+      };
     case "CHANGE_TRACK":
       return {
         ...state,
@@ -60,7 +65,7 @@ export class Provider extends Component {
 
     this.state = {
       tracks_list: [],
-      heading: "Top 10 Tracks",
+      heading: "",
       list_active: false,
       focused: false,
       trackTitle: "",
