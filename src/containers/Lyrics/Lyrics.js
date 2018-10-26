@@ -40,7 +40,7 @@ class Lyrics extends Component {
         const track = res.data.message.body.track;
         this.setState({ track });
 
-        console.log(track);
+        // console.log(track);
 
         // Get token and track info from spotify
         return axios.get("/token");
@@ -53,7 +53,7 @@ class Lyrics extends Component {
           token.data.token
         );
 
-        console.log(token);
+        // console.log(token);
 
         return axios.get(param.FETCH_URL, param.headers);
       })
@@ -62,7 +62,7 @@ class Lyrics extends Component {
           const artist = json.data.tracks.items[0];
           this.setState({ artist });
 
-          console.log(artist);
+          // console.log(artist);
         } else {
           this.setState({
             artist: { id: 0, external_urls: { spotify: "https://spotify.com" } }
