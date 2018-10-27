@@ -1,4 +1,4 @@
-##Lyrics App
+## Lyrics App
 
 This app was built with ReactJS and allows users to search for lyrics in the Musixmatch database.
 When the user gets the result, besides the lyrics, the app also presents a spotify player that users can use to listen to the full song or a part of it, depending on the song. 
