@@ -20,23 +20,12 @@ const reducer = (state, action) => {
         ...state,
         tracks_list: action.payload,
         list_active: false,
-        focused: false,
         trackTitle: ""
       };
     case "SHOW_LIST":
       return {
         ...state,
         list_active: true
-      };
-    case "INPUT_FOCUS":
-      return {
-        ...state,
-        focused: true
-      };
-    case "REMOVE_FOCUS":
-      return {
-        ...state,
-        focused: false
       };
     case "CHANGE_TRACK":
       return {
@@ -59,7 +48,7 @@ const reducer = (state, action) => {
   }
 };
 
-export class Provider extends Component {
+export class TrackProvider extends Component {
   constructor() {
     super();
 
@@ -67,17 +56,10 @@ export class Provider extends Component {
       tracks_list: [],
       heading: "",
       list_active: false,
-      focused: false,
       trackTitle: "",
-      activePage: "",
-      changeActivePage: this.changeActivePage,
       dispatch: action => this.setState(state => reducer(state, action))
     };
   }
-
-  changeActivePage = activePage => {
-    this.setState({ activePage });
-  };
 
   render() {
     return (
@@ -88,4 +70,4 @@ export class Provider extends Component {
   }
 }
 
-export const Consumer = Context.Consumer;
+export const TrackConsumer = Context.Consumer;

@@ -1,14 +1,14 @@
 import React from "react";
 import About from "./About";
-import { Consumer } from "../../context";
+import { AppConsumer } from "../../AppContext";
 
 function AboutWrap() {
   return (
-    <Consumer>
+    <AppConsumer>
       {context => {
         return <About context={context} />;
       }}
-    </Consumer>
+    </AppConsumer>
   );
 }
 

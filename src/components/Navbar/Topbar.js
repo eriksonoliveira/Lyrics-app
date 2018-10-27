@@ -1,25 +1,36 @@
 import React from "react";
-import { Consumer } from "../../context";
+import { TrackConsumer } from "../../TrackContext";
+import { AppConsumer } from "../../AppContext";
 
 import Navbar from "./Navbar";
-import BackButton from "./Button/BackButton";
+import ArrowButtonWrap from "./Button/ArrowButtonWrap";
 import MenuButton from "./Button/MenuButton";
 
 import "./Navbar.css";
 
 const Topbar = () => {
   return (
-    <Consumer>
-      {({ focused, ...context }) => {
-        return (
-          <Navbar>
-            <React.Fragment>
-              {focused ? <BackButton {...context} /> : <MenuButton />}
-            </React.Fragment>
-          </Navbar>
-        );
-      }}
-    </Consumer>
+    <AppConsumer>
+      {({ focused, activePage, ...context }) => (
+        <TrackConsumer>
+          {trackContext => (
+            <Navbar>
+              <React.Fragment>
+                {focused ? (
+                  <ArrowButtonWrap
+                    trackDispatch={trackContext.dispatch}
+                    appDispatch={context.dispatch}
+                    activePage={activePage}
+                  />
+                ) : (
+                  <MenuButton />
+                )}
+              </React.Fragment>
+            </Navbar>
+          )}
+        </TrackConsumer>
+      )}
+    </AppConsumer>
   );
 };
 

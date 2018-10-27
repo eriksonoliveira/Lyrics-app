@@ -13,7 +13,10 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    this.props.changeActivePage("home");
+    this.props.appDispatch({
+      type: "CHANGE_ACTIVE",
+      payload: "home"
+    });
   }
 
   handleEvent(action) {
@@ -42,7 +45,6 @@ class Search extends Component {
 
     // If the list is active, just clear the list, otherwise, make the list active
     const type = list_active ? "CLEAR_TRACKS" : "SHOW_LIST";
-
     dispatch({
       type,
       payload: []
@@ -75,13 +77,18 @@ class Search extends Component {
         })
         .catch(err => console.log(err));
     }
+    return true;
   }
 
   render() {
     return (
       <div className="search">
         <Header />
-        <Form findTrack={this.findTrack} handleEvent={this.handleEvent} />
+        <Form
+          findTrack={this.findTrack}
+          handleEvent={this.handleEvent}
+          appDispatch={this.props.appDispatch}
+        />
       </div>
     );
   }

@@ -4,7 +4,10 @@ import "./About.css";
 
 export class About extends Component {
   componentDidMount() {
-    this.props.context.changeActivePage("about");
+    this.props.context.dispatch({
+      type: "CHANGE_ACTIVE",
+      payload: "About"
+    });
     this.props.context.dispatch({
       type: "INPUT_FOCUS"
     });

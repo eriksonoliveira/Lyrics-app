@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Consumer } from "../../context";
 import { Scrollbars } from "react-custom-scrollbars";
 
 import Spinner from "../Spinner/Spinner";
@@ -9,33 +8,30 @@ import "./Track.css";
 
 class Tracks extends Component {
   render() {
-    return (
-      <Consumer>
-        {({ tracks_list, heading }) => {
-          if (tracks_list === undefined || tracks_list.length === 0) {
-            // Result is pending, render the spinner
-            return <Spinner />;
-          } else if (tracks_list[0] === "not_found") {
-            // Track name not found, render a message
-            return <h3 className="text-center mb-4">{heading}</h3>;
-          } else {
-            return (
-              <div className="tracks-list">
-                <Scrollbars
-                  renderThumbVertical={props => (
-                    <div {...props} className="thumb-vertical" />
-                  )}
-                >
-                  {tracks_list.map(item => (
-                    <Track key={item.track.track_id} track={item.track} />
-                  ))}
-                </Scrollbars>
-              </div>
-            );
-          }
-        }}
-      </Consumer>
-    );
+    if (
+      this.props.tracks_list === undefined ||
+      this.props.tracks_list.length === 0
+    ) {
+      // Result is pending, render the spinner
+      return <Spinner />;
+    } else if (this.props.tracks_list[0] === "not_found") {
+      // Track name not found, render a message
+      return <h3 className="text-center mb-4">{this.props.heading}</h3>;
+    } else {
+      return (
+        <div className="tracks-list">
+          <Scrollbars
+            renderThumbVertical={props => (
+              <div {...props} className="thumb-vertical" />
+            )}
+          >
+            {this.props.tracks_list.map(item => (
+              <Track key={item.track.track_id} track={item.track} />
+            ))}
+          </Scrollbars>
+        </div>
+      );
+    }
   }
 }
 

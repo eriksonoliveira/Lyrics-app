@@ -18,7 +18,10 @@ class Lyrics extends Component {
   }
 
   componentDidMount() {
-    this.props.changeActivePage("lyrics");
+    this.props.dispatch({
+      type: "CHANGE_ACTIVE",
+      payload: "lyrics"
+    });
     // Getting lyrics and track info
     // track id comes from url through React router (props.match.params.id)
     axios

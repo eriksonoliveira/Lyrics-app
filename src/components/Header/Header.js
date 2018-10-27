@@ -1,12 +1,12 @@
 import React from "react";
-import { Consumer } from "../../context";
+import { AppConsumer } from "../../AppContext";
 import Transition from "react-transition-group/Transition";
 
 import "./Header.css";
 
 const Header = () => {
   return (
-    <Consumer>
+    <AppConsumer>
       {({ focused }) => {
         return (
           <Transition in={focused} timeout={300}>
@@ -20,7 +20,7 @@ const Header = () => {
           </Transition>
         );
       }}
-    </Consumer>
+    </AppConsumer>
   );
 };
 

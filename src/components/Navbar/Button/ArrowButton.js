@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const BackButton = props => {
-  const { activePage, dispatch } = props;
-
   const icon = (
     <img
       className="navbar-btn-icon"
@@ -13,11 +11,8 @@ const BackButton = props => {
     />
   );
 
-  return activePage === "home" ? (
-    <span
-      className="navbar-btn"
-      onClick={() => dispatch({ type: "HIDE_LIST", payload: [] })}
-    >
+  return props.activePage === "home" ? (
+    <span className="navbar-btn" onClick={props.handleClick}>
       {icon}
     </span>
   ) : (
