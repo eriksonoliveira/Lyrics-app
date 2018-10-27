@@ -22,6 +22,19 @@
   left: 0px;
 }
 
+.menu-item a {
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  padding: 0.6rem 0.5rem;
+  color: #fff;
+}
+
+.menu-item a:hover {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .bm-menu-wrap {
   width: 250px !important;
 }
