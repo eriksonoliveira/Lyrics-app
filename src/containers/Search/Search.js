@@ -52,7 +52,7 @@ class Search extends Component {
 
     if (this.props.trackTitle.length > 0) {
       // TEST KEY
-      console.log(process.env.REACT_APP_MUSIXMATCH_KEY);
+      // console.log(process.env.REACT_APP_MUSIXMATCH_KEY);
 
       axios
         .get(
