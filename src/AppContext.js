@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { firebase } from "./firebase";
 
 const Context = React.createContext();
 
@@ -35,6 +36,14 @@ export class AppProvider extends Component {
         this.setState(state => reducer(state, action));
       }
     };
+  }
+
+  componentDidMount() {
+    firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState({ authUser: authUser.email })
+        : this.setState({ authUser: null });
+    });
   }
 
   render() {

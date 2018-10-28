@@ -9,32 +9,15 @@ import SignupWrap from "./Signup/SignupWrap";
 import LyricsWrap from "../containers/Lyrics/LyricsWrap";
 
 import * as routes from "../constants/routes";
-import { firebase } from "../firebase";
 
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      authUser: null
-    };
-  }
-
-  componentDidMount() {
-    firebase.auth.onAuthStateChanged(authUser => {
-      authUser
-        ? this.setState({ authUser: authUser.email })
-        : this.setState({ authUser: null });
-    });
-  }
-
   render() {
     return (
       <Router>
         <div className="app">
-          <Topbar authUser={this.state.authUser} />
+          <Topbar />
           <main className="app-main-content">
             <Switch>
               <React.Fragment>

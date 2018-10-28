@@ -8,10 +8,10 @@ import MenuButton from "./Button/MenuButton";
 
 import "./Navbar.css";
 
-const Topbar = ({ authUser }) => {
+const Topbar = () => {
   return (
     <AppConsumer>
-      {({ focused, activePage, ...context }) => (
+      {({ focused, activePage, authUser, ...context }) => (
         <TrackConsumer>
           {trackContext => (
             <Navbar>
