@@ -41,7 +41,7 @@ html {
   width: inherit;
   height: 100%;
   background-color: rgb(26, 12, 43);
-  background-image: url("./Images/headphones-waves.png");
+  background-image: url("../Images/headphones-waves.png");
   -webkit-background-size: contain;
   background-size: contain;
   background-repeat: no-repeat;
@@ -61,7 +61,7 @@ html {
 #frame {
   height: 855px;
   width: 425px;
-  background-image: url("./Images/smartphone.png");
+  background-image: url("../Images/smartphone.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -71,6 +71,24 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.form {
+  width: 80%;
+  margin: 100px auto 0 auto;
+}
+
+.form .form-input {
+  margin-top: 0.5rem;
+}
+
+.submit-btn {
+  background-color: #ff6c00;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #ea6300;
 }
 
 @media only screen and (max-width: 750px) {

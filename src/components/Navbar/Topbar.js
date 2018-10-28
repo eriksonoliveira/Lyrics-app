@@ -11,7 +11,7 @@ import "./Navbar.css";
 const Topbar = () => {
   return (
     <AppConsumer>
-      {({ focused, activePage, ...context }) => (
+      {({ focused, activePage, user, ...context }) => (
         <TrackConsumer>
           {trackContext => (
             <Navbar>
@@ -23,7 +23,7 @@ const Topbar = () => {
                     activePage={activePage}
                   />
                 ) : (
-                  <MenuButton />
+                  <MenuButton loggedIn={user} />
                 )}
               </React.Fragment>
             </Navbar>

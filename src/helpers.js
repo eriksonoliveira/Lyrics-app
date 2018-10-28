@@ -27,3 +27,8 @@ export function replaceSpaces(str) {
 
   return str;
 }
+
+export function lowercaseFirstLetter(str) {
+  const firstLetter = str.charAt(0).toLowerCase();
+  return firstLetter + str.substr(1);
+}

@@ -27,7 +27,7 @@ export class Form extends Component {
                     <div className="search-form-input-wrap">
                       <input
                         type="text"
-                        className="search-form-input"
+                        className="form-input"
                         placeholder="Search music..."
                         name="trackTitle"
                         required="required"
