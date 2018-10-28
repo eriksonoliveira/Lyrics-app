@@ -32,13 +32,13 @@ export class Signup extends Component {
     });
 
     this.props.context.dispatch({
-      type: "INPUT_FOCUS"
+      type: "SHOW_ARROW"
     });
   }
 
   componentWillUnmount() {
     this.props.context.dispatch({
-      type: "REMOVE_FOCUS"
+      type: "HIDE_ARROW"
     });
   }
 

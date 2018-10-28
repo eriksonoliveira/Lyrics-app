@@ -8,17 +8,29 @@ const reducer = (state, action) => {
     case "INPUT_FOCUS":
       return {
         ...state,
-        focused: true
+        focused: true,
+        showArrow: true
       };
     case "REMOVE_FOCUS":
       return {
         ...state,
-        focused: false
+        focused: false,
+        showArrow: false
       };
     case "CHANGE_ACTIVE":
       return {
         ...state,
         activePage: action.payload
+      };
+    case "SHOW_ARROW":
+      return {
+        ...state,
+        showArrow: true
+      };
+    case "HIDE_ARROW":
+      return {
+        ...state,
+        showArrow: false
       };
     default:
       return state;
@@ -31,6 +43,8 @@ export class AppProvider extends Component {
 
     this.state = {
       focused: false,
+      showArrow: false,
+      authUser: null,
       activePage: "",
       dispatch: action => {
         this.setState(state => reducer(state, action));

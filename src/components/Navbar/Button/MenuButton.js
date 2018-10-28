@@ -7,7 +7,9 @@ import Signout from "../../Signout/Signout";
 import * as routes from "../../../constants/routes";
 
 const MenuButton = ({ authUser }) => {
-  console.log(authUser);
+  if (authUser) {
+    console.log(authUser);
+  }
   return (
     <div className="menu">
       <Menu

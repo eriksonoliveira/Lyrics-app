@@ -11,12 +11,12 @@ import "./Navbar.css";
 const Topbar = () => {
   return (
     <AppConsumer>
-      {({ focused, activePage, authUser, ...context }) => (
+      {({ showArrow, activePage, authUser, ...context }) => (
         <TrackConsumer>
           {trackContext => (
             <Navbar>
               <React.Fragment>
-                {focused ? (
+                {showArrow ? (
                   <ArrowButtonWrap
                     trackDispatch={trackContext.dispatch}
                     appDispatch={context.dispatch}
