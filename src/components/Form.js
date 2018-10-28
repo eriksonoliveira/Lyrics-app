@@ -2,6 +2,10 @@ import React from "react";
 import ErrorMessage from "./ErrorMessage";
 
 const Form = props => {
+  const { email, password, error } = props;
+
+  const isInvalid = password === "" || email === "";
+
   return (
     <form className="form">
       <label htmlFor="signup-email" className="sr-only">
@@ -11,7 +15,8 @@ const Form = props => {
         id="signup-email"
         className="form-input"
         type="email"
-        placeholder="email"
+        placeholder="Email"
+        value={email}
         name="email"
         required
         onChange={e => props.handleChange(e)}
@@ -23,19 +28,21 @@ const Form = props => {
         id="signup-password"
         className="form-input"
         type="password"
-        placeholder="password"
+        placeholder="Password"
+        value={password}
         name="password"
         required
         onChange={e => props.handleChange(e)}
       />
       <button
+        disabled={isInvalid}
         type="submit"
         className="form-input submit-btn"
         onClick={props.handleClick}
       >
         {props.btnText}
       </button>
-      <ErrorMessage error={props.error} />
+      <ErrorMessage error={error} />
     </form>
   );
 };

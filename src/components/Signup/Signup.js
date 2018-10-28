@@ -1,18 +1,25 @@
 import React, { Component } from "react";
-import { firebaseAuth } from "../../firebase";
+import { withRouter } from "react-router-dom";
+import { auth } from "../../firebase/";
 
 import Form from "../Form";
+
+import * as routes from "../../constants/routes";
+
+const INITIAL_STATE = {
+  email: "",
+  password: "",
+  error: {
+    message: ""
+  }
+};
 
 export class Signup extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      error: {
-        message: ""
-      }
+      ...INITIAL_STATE
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,9 +51,16 @@ export class Signup extends Component {
   handleClick(e) {
     e.preventDefault();
     console.log(this.state);
+
     const { email, password } = this.state;
-    firebaseAuth
-      .createUserWithEmailAndPassword(email, password)
+    const { history } = this.props;
+
+    auth
+      .doCreateUserWithEmailAndPassword(email, password)
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE });
+        history.push(routes.HOME);
+      })
       .catch(error => {
         this.setState({ error });
       });
@@ -57,11 +71,11 @@ export class Signup extends Component {
       <Form
         handleChange={this.handleChange}
         handleClick={this.handleClick}
-        error={this.state.error}
+        {...this.state}
         btnText="Sign Up"
       />
     );
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

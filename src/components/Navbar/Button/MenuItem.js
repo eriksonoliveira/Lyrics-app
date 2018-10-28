@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { lowercaseFirstLetter } from "../../../helpers";
+import { helpers } from "../../../helpers";
 
 const MenuItem = props => {
-  const routeLowerCase = lowercaseFirstLetter(props.route);
+  const routeName = helpers.formatRouteName(props.route);
 
   return (
     <div className="menu-item">
-      <Link className="menu-item-link" to={`/${routeLowerCase}`}>
-        {props.route}
+      <Link className="menu-item-link" to={props.route}>
+        {routeName}
       </Link>
     </div>
   );

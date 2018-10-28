@@ -1,10 +1,10 @@
-import { replaceSpaces } from "./helpers";
+import { helpers } from "./helpers";
 
 export function createURLArtist(track, artist, accessToken) {
   // Build Spotify fetch URL
   // replace spaces with %20
-  artist = replaceSpaces(artist);
-  track = replaceSpaces(track);
+  artist = helpers.replaceSpaces(artist);
+  track = helpers.replaceSpaces(track);
 
   const BASE_URL = "https://api.spotify.com/v1/search?";
   const FETCH_URL = `${BASE_URL}q=track%3A${track}%20artist%3A${artist}&type=track&limit=1`;

@@ -1,9 +1,9 @@
 import React from "react";
-import Login from "./Signin";
+import SignIn from "./Signin";
 import { AppConsumer } from "../../AppContext";
 
 const SigninWrap = () => {
-  return <AppConsumer>{context => <Login context={context} />}</AppConsumer>;
+  return <AppConsumer>{context => <SignIn context={context} />}</AppConsumer>;
 };
 
 export default SigninWrap;

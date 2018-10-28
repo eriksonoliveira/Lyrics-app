@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { firebaseApp } from "./firebase";
 
 const Context = React.createContext();
 
@@ -30,19 +29,12 @@ export class AppProvider extends Component {
     super(props);
 
     this.state = {
-      user: null,
       focused: false,
       activePage: "",
       dispatch: action => {
         this.setState(state => reducer(state, action));
       }
     };
-
-    firebaseApp.auth().onAuthStateChanged(user => {
-      this.setState({
-        user: user
-      });
-    });
   }
 
   render() {

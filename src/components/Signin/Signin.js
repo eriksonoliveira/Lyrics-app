@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { firebaseAuth } from "../../firebase";
+import { Link, withRouter } from "react-router-dom";
+import { auth } from "../../firebase";
 
 import Form from "../Form";
 
-export class Login extends Component {
+import * as routes from "../../constants/routes";
+
+const INITIAL_STATE = {
+  email: "",
+  password: "",
+  error: {
+    message: ""
+  }
+};
+
+export class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
-      error: {
-        message: ""
-      }
+      ...INITIAL_STATE
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,10 +50,19 @@ export class Login extends Component {
   handleClick(e) {
     e.preventDefault();
     console.log(this.state);
+
     const { email, password } = this.state;
-    firebaseAuth.signInWithEmailAndPassword(email, password).catch(error => {
-      this.setState({ error });
-    });
+    const { history } = this.props;
+
+    auth
+      .doSignInWithEmailAndPassword(email, password)
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE });
+        history.push(routes.HOME);
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
   }
 
   render() {
@@ -56,7 +71,7 @@ export class Login extends Component {
         <Form
           handleChange={this.handleChange}
           handleClick={this.handleClick}
-          error={this.state.error}
+          {...this.state}
           btnText="Log In"
         />
         <Link to="/signup">Don't have an accout? Sign Up here</Link>
@@ -65,4 +80,4 @@ export class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(SignIn);

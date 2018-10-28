@@ -1,9 +1,13 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
+
 import MenuItem from "./MenuItem";
 import Signout from "../../Signout/Signout";
 
-const MenuButton = props => {
+import * as routes from "../../../constants/routes";
+
+const MenuButton = ({ authUser }) => {
+  console.log(authUser);
   return (
     <div className="menu">
       <Menu
@@ -15,9 +19,8 @@ const MenuButton = props => {
           />
         }
       >
-        <MenuItem route={"About"} />
-        {props.loggedIn || <MenuItem route={"Login"} />}
-        {props.loggedIn && <Signout />}
+        <MenuItem route={routes.ABOUT} />
+        {authUser ? <Signout /> : <MenuItem route={routes.SIGN_IN} />}
       </Menu>
     </div>
   );

@@ -82,6 +82,11 @@ html {
   margin-top: 0.5rem;
 }
 
+.form button:disabled {
+  cursor: default;
+  background-color: #ea6300;
+}
+
 .submit-btn {
   background-color: #ff6c00;
   cursor: pointer;

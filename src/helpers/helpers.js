@@ -28,7 +28,8 @@ export function replaceSpaces(str) {
   return str;
 }
 
-export function lowercaseFirstLetter(str) {
-  const firstLetter = str.charAt(0).toLowerCase();
-  return firstLetter + str.substr(1);
+export function formatRouteName(str) {
+  const routeName = str.substr(1);
+  const firstLetter = routeName.charAt(0).toUpperCase();
+  return firstLetter + routeName.substr(1);
 }

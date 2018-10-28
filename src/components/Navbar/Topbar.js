@@ -8,10 +8,10 @@ import MenuButton from "./Button/MenuButton";
 
 import "./Navbar.css";
 
-const Topbar = () => {
+const Topbar = ({ authUser }) => {
   return (
     <AppConsumer>
-      {({ focused, activePage, user, ...context }) => (
+      {({ focused, activePage, ...context }) => (
         <TrackConsumer>
           {trackContext => (
             <Navbar>
@@ -23,7 +23,7 @@ const Topbar = () => {
                     activePage={activePage}
                   />
                 ) : (
-                  <MenuButton loggedIn={user} />
+                  <MenuButton authUser={authUser} />
                 )}
               </React.Fragment>
             </Navbar>
