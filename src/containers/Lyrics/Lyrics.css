@@ -39,3 +39,21 @@
   text-decoration: underline;
   color: #a0204c;
 }
+
+.save-btn {
+  padding: 0.7rem 1rem;
+  color: #ff6c00;
+  border: 1px solid #ff6c00;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+}
+
+.save-btn:hover,
+.track-saved {
+  background-color: #ff6c00;
+  color: #fff;
+}

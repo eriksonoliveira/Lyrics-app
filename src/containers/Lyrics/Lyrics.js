@@ -13,14 +13,21 @@ class Lyrics extends Component {
     this.state = {
       track: {},
       lyrics: {},
-      artist: {}
+      artist: {},
+      saved: false
     };
+
+    this.handleSaveClick = this.handleSaveClick.bind(this);
   }
 
   componentDidMount() {
     this.props.dispatch({
       type: "CHANGE_ACTIVE",
       payload: "lyrics"
+    });
+
+    this.props.dispatch({
+      type: "SHOW_ARROW"
     });
     // Getting lyrics and track info
     // track id comes from url through React router (props.match.params.id)
@@ -77,6 +84,18 @@ class Lyrics extends Component {
       .catch(err => console.log(err));
   }
 
+  componentWillUnmount() {
+    this.props.dispatch({
+      type: "HIDE_ARROW"
+    });
+  }
+
+  handleSaveClick() {
+    this.setState({
+      saved: !this.state.saved
+    });
+  }
+
   render() {
     const { track, lyrics, artist } = this.state;
 
@@ -89,7 +108,9 @@ class Lyrics extends Component {
     ) {
       return <Spinner />;
     } else {
-      return <LyricsPage artist={artist} lyrics={lyrics} track={track} />;
+      return (
+        <LyricsPage {...this.state} handleSaveClick={this.handleSaveClick} />
+      );
     }
   }
 }
