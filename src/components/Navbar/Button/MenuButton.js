@@ -7,9 +7,6 @@ import Signout from "../../Signout/Signout";
 import * as routes from "../../../constants/routes";
 
 const MenuButton = ({ authUser }) => {
-  if (authUser) {
-    console.log(authUser);
-  }
   return (
     <div className="menu">
       <Menu
@@ -21,8 +18,16 @@ const MenuButton = ({ authUser }) => {
           />
         }
       >
+        {authUser ? (
+          <React.Fragment>
+            <MenuItem route={routes.ACCOUNT} />
+            <MenuItem route={routes.SAVED_TRACKS} />
+            <Signout />
+          </React.Fragment>
+        ) : (
+          <MenuItem route={routes.SIGN_IN} />
+        )}
         <MenuItem route={routes.ABOUT} />
-        {authUser ? <Signout /> : <MenuItem route={routes.SIGN_IN} />}
       </Menu>
     </div>
   );

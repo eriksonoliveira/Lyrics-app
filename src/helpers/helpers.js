@@ -29,7 +29,7 @@ export function replaceSpaces(str) {
 }
 
 export function formatRouteName(str) {
-  const routeName = str.substr(1);
+  const routeName = str.substr(1).replace("-", " ");
   const firstLetter = routeName.charAt(0).toUpperCase();
   return firstLetter + routeName.substr(1);
 }

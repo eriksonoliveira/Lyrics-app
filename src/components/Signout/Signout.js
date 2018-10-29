@@ -4,7 +4,7 @@ import { auth } from "../../firebase";
 export class Signout extends Component {
   render() {
     return (
-      <div className="menu-item" onClick={auth.doSignOut}>
+      <div className="menu-item signout" onClick={auth.doSignOut}>
         <a className="menu-item-link">Log out</a>
       </div>
     );

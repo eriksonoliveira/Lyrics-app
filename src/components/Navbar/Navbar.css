@@ -65,17 +65,22 @@
 
 .bm-menu {
   background-color: rgb(26, 12, 43);
-  padding: 2.5em 1.5em 0;
+  padding: 2.5em 1em;
   font-size: 1.15em;
   border-right: 1px solid #ff6c00;
 }
 
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
+  position: relative;
 }
 
 .bm-item {
   color: #eeeeee;
   display: inline-block;
+}
+
+.menu-item.signout {
+  position: absolute;
+  bottom: 0;
 }

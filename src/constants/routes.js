@@ -4,3 +4,4 @@ export const HOME = "/";
 export const ACCOUNT = "/account";
 export const LYRICS = "/lyrics/track/:id";
 export const ABOUT = "/about";
+export const SAVED_TRACKS = "/saved-tracks";

@@ -3,13 +3,7 @@ import About from "./About";
 import { AppConsumer } from "../../AppContext";
 
 function AboutWrap() {
-  return (
-    <AppConsumer>
-      {context => {
-        return <About context={context} />;
-      }}
-    </AppConsumer>
-  );
+  return <AppConsumer>{context => <About context={context} />}</AppConsumer>;
 }
 
 export default AboutWrap;

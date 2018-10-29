@@ -7,6 +7,8 @@ import AboutWrap from "./About/AboutWrap";
 import SigninWrap from "./Signin/SigninWrap";
 import SignupWrap from "./Signup/SignupWrap";
 import LyricsWrap from "../containers/Lyrics/LyricsWrap";
+import Account from "./Account";
+import SavedTracks from "./SavedTracks";
 
 import * as routes from "../constants/routes";
 
@@ -37,6 +39,12 @@ class App extends Component {
                   exact
                   path={routes.SIGN_UP}
                   render={() => <SignupWrap />}
+                />
+                <Route exact path={routes.ACCOUNT} render={() => <Account />} />
+                <Route
+                  exact
+                  path={routes.SAVED_TRACKS}
+                  render={() => <SavedTracks />}
                 />
               </React.Fragment>
             </Switch>
