@@ -29,3 +29,10 @@ export const doSaveTrack = (
 export const onceGetFavourites = uid => {
   return db.ref(`favourites/${uid}`).once("value");
 };
+
+export const doRemoveTrack = (uid, track_key) => {
+  return db
+    .ref(`favourites/${uid}`)
+    .child(track_key)
+    .remove();
+};

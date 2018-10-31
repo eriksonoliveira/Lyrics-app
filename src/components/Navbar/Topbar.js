@@ -1,6 +1,7 @@
 import React from "react";
 import { TrackConsumer } from "../../TrackContext";
 import { AppConsumer } from "../../AppContext";
+import { withRouter } from "react-router-dom";
 
 import Navbar from "./Navbar";
 import ArrowButtonWrap from "./Button/ArrowButtonWrap";
@@ -8,7 +9,8 @@ import MenuButton from "./Button/MenuButton";
 
 import "./Navbar.css";
 
-const Topbar = () => {
+const Topbar = props => {
+  const { history } = props;
   return (
     <AppConsumer>
       {({ showArrow, activePage, authUser, ...context }) => (
@@ -21,6 +23,7 @@ const Topbar = () => {
                     trackDispatch={trackContext.dispatch}
                     appDispatch={context.dispatch}
                     activePage={activePage}
+                    history={history}
                   />
                 ) : (
                   <MenuButton authUser={authUser} />
@@ -34,4 +37,4 @@ const Topbar = () => {
   );
 };
 
-export default Topbar;
+export default withRouter(Topbar);

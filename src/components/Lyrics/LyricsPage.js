@@ -26,7 +26,6 @@ const LyricsPage = props => {
         <Moment format="YYYY">{first_release_date}</Moment>
       </h2>
       <FavouriteButton />
-      {/* <SaveBtn /> */}
       <Lyrics lyrics_body={lyrics.lyrics_body} />
       <div>
         <SpotifyPlayer artist_id={artist.id} />

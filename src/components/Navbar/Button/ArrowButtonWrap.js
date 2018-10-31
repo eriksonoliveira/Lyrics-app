@@ -9,8 +9,12 @@ export class ArrowButtonWrap extends Component {
   }
 
   handleClick() {
-    this.props.appDispatch({ type: "REMOVE_FOCUS" });
-    this.props.trackDispatch({ type: "HIDE_LIST", payload: [] });
+    if (this.props.activePage === "home") {
+      this.props.appDispatch({ type: "REMOVE_FOCUS" });
+      this.props.trackDispatch({ type: "HIDE_LIST", payload: [] });
+    } else {
+      this.props.history.goBack();
+    }
   }
 
   render() {

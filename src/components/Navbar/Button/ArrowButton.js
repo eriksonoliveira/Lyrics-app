@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const BackButton = props => {
   const icon = (
@@ -16,9 +16,9 @@ const BackButton = props => {
       {icon}
     </span>
   ) : (
-    <Link to="/" className="navbar-btn">
+    <div to="/" className="navbar-btn" onClick={props.handleClick}>
       {icon}
-    </Link>
+    </div>
   );
 };
 

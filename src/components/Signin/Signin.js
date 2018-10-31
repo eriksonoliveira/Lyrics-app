@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { auth } from "../../firebase";
 
 import SigninForm from "./SigninForm";
@@ -74,7 +74,6 @@ export class SignIn extends Component {
           {...this.state}
           btnText="Log In"
         />
-        <Link to="/signup">Don't have an accout? Sign Up here</Link>
       </div>
     );
   }

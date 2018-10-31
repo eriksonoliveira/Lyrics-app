@@ -25,7 +25,10 @@ const MenuButton = ({ authUser }) => {
             <Signout />
           </React.Fragment>
         ) : (
-          <MenuItem route={routes.SIGN_IN} />
+          <React.Fragment>
+            <MenuItem route={routes.SIGN_IN} />
+            <MenuItem route={routes.SIGN_UP} />
+          </React.Fragment>
         )}
         <MenuItem route={routes.ABOUT} />
       </Menu>
