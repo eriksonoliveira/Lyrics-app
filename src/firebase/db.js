@@ -11,12 +11,18 @@ export const onceGetUser = id => {
   return db.ref(`users/${id}`).once("value");
 };
 
-export const doSaveTrack = (uid, trackId, trackName, Artist, Album) => {
+export const doSaveTrack = (
+  uid,
+  track_id,
+  track_name,
+  artist_name,
+  album_name
+) => {
   return db.ref(`favourites/${uid}`).push({
-    trackId,
-    trackName,
-    Artist,
-    Album
+    track_id,
+    track_name,
+    artist_name,
+    album_name
   });
 };
 

@@ -87,7 +87,7 @@ class Lyrics extends Component {
       return <Spinner />;
     } else {
       return (
-        <LyricsPage {...this.state} trackId={this.props.match.params.id} />
+        <LyricsPage {...this.state} track_id={this.props.match.params.id} />
       );
     }
   }

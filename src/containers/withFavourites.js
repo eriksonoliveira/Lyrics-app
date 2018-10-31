@@ -18,11 +18,11 @@ const withFavourites = (Component, trackData) => {
       firebase.auth.onAuthStateChanged(authUser => {
         if (authUser) {
           db.onceGetFavourites(authUser.uid).then(snapshot => {
-            console.log(snapshot.val());
+            //console.log(snapshot.val());
 
             snapshot.forEach(track => {
-              const { trackId } = track.val();
-              if (trackId === trackData.trackId) {
+              const { track_id } = track.val();
+              if (track_id === trackData.track_id) {
                 this.setState({ saved: true });
               }
             });
@@ -35,12 +35,12 @@ const withFavourites = (Component, trackData) => {
 
     handleSaveClick() {
       if (!this.state.saved) {
-        const { track, trackId } = trackData;
+        const { track, track_id } = trackData;
         const { uid } = this.state.authUser;
 
         db.doSaveTrack(
           uid,
-          trackId,
+          track_id,
           track.track_name,
           track.artist_name,
           track.album_name
