@@ -13,11 +13,8 @@ class Lyrics extends Component {
     this.state = {
       track: {},
       lyrics: {},
-      artist: {},
-      saved: false
+      artist: {}
     };
-
-    this.handleSaveClick = this.handleSaveClick.bind(this);
   }
 
   componentDidMount() {
@@ -62,38 +59,19 @@ class Lyrics extends Component {
           this.state.track.artist_name,
           token.data.token
         );
-
-        // console.log(token);
-
         return axios.get(param.FETCH_URL, param.headers);
       })
       .then(json => {
         if (json.data.tracks.items.length > 0) {
           const artist = json.data.tracks.items[0];
           this.setState({ artist });
-
-          // console.log(artist);
         } else {
           this.setState({
             artist: { id: 0, external_urls: { spotify: "https://spotify.com" } }
           });
-
-          // console.log(json);
         }
       })
       .catch(err => console.log(err));
-  }
-
-  componentWillUnmount() {
-    this.props.dispatch({
-      type: "HIDE_ARROW"
-    });
-  }
-
-  handleSaveClick() {
-    this.setState({
-      saved: !this.state.saved
-    });
   }
 
   render() {
@@ -109,7 +87,7 @@ class Lyrics extends Component {
       return <Spinner />;
     } else {
       return (
-        <LyricsPage {...this.state} handleSaveClick={this.handleSaveClick} />
+        <LyricsPage {...this.state} trackId={this.props.match.params.id} />
       );
     }
   }

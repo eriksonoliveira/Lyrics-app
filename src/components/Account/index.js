@@ -2,6 +2,8 @@ import React from "react";
 import { AppConsumer } from "../../AppContext";
 import AccountInfo from "./AccountInfo";
 
+import withAuthorization from "../withAuthorization";
+
 const Account = () => {
   return (
     <AppConsumer>
@@ -10,4 +12,6 @@ const Account = () => {
   );
 };
 
-export default Account;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(Account);

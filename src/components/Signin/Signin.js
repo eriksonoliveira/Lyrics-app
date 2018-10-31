@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { auth } from "../../firebase";
 
-import Form from "../Form";
+import SigninForm from "./SigninForm";
 
 import * as routes from "../../constants/routes";
 
@@ -68,7 +68,7 @@ export class SignIn extends Component {
   render() {
     return (
       <div>
-        <Form
+        <SigninForm
           handleChange={this.handleChange}
           handleClick={this.handleClick}
           {...this.state}

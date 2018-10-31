@@ -1,6 +1,7 @@
 import React from "react";
 import { AppConsumer } from "../../AppContext";
 import SavedTracksList from "./SavedTracksList";
+import withAuthorization from "../withAuthorization";
 
 const SavedTracks = () => {
   return (
@@ -10,4 +11,6 @@ const SavedTracks = () => {
   );
 };
 
-export default SavedTracks;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(SavedTracks);

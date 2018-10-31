@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 export class AccountInfo extends Component {
   componentDidMount() {
-    this.props.appContext.dispatch({
+    const { dispatch } = this.props.appContext;
+
+    dispatch({
       type: "CHANGE_ACTIVE",
       payload: "Saved_tracks"
     });
 
-    this.props.appContext.dispatch({
+    dispatch({
       type: "SHOW_ARROW"
     });
   }
@@ -20,8 +23,12 @@ export class AccountInfo extends Component {
 
   render() {
     const { authUser } = this.props.appContext;
-    return <div>{authUser}</div>;
+    return (
+      <div>
+        <div>{authUser.email}</div>
+      </div>
+    );
   }
 }
 
-export default AccountInfo;
+export default withRouter(AccountInfo);

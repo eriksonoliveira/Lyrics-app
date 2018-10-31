@@ -1,5 +1,6 @@
 import React from "react";
 import Moment from "react-moment";
+import withFavourites from "../../containers/withFavourites";
 
 import Lyrics from "./Lyrics";
 import SpotifyPlayer from "../Player/SpotifyPlayer";
@@ -13,7 +14,9 @@ const LyricsPage = props => {
     first_release_date
   } = props.track;
 
-  const { lyrics, artist, handleSaveClick, saved } = props;
+  const { lyrics, artist } = props;
+
+  const FavouriteButton = withFavourites(SaveBtn, { ...props });
 
   return (
     <div className="lyrics">
@@ -22,7 +25,8 @@ const LyricsPage = props => {
       <h2 className="lyrics-release-date">
         <Moment format="YYYY">{first_release_date}</Moment>
       </h2>
-      <SaveBtn saved={saved} handleSaveClick={handleSaveClick} />
+      <FavouriteButton />
+      {/* <SaveBtn /> */}
       <Lyrics lyrics_body={lyrics.lyrics_body} />
       <div>
         <SpotifyPlayer artist_id={artist.id} />

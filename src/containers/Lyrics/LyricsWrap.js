@@ -5,7 +5,7 @@ import Lyrics from "./Lyrics";
 const LyricsWrapper = props => {
   return (
     <AppConsumer>
-      {({ dispatch }) => <Lyrics {...props} dispatch={dispatch} />}
+      {({ dispatch, authUser }) => <Lyrics {...props} dispatch={dispatch} />}
     </AppConsumer>
   );
 };

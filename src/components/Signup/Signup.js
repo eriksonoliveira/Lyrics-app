@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { auth } from "../../firebase/";
+import { auth, db } from "../../firebase/";
 
-import Form from "../Form";
+import SignupForm from "./SignupForm";
 
 import * as routes from "../../constants/routes";
 
 const INITIAL_STATE = {
+  username: "",
   email: "",
   password: "",
   error: {
@@ -50,16 +51,22 @@ export class Signup extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
 
-    const { email, password } = this.state;
+    const { username, email, password } = this.state;
     const { history } = this.props;
 
     auth
       .doCreateUserWithEmailAndPassword(email, password)
       .then(authUser => {
-        this.setState({ ...INITIAL_STATE });
-        history.push(routes.HOME);
+        db.doCreateUser(authUser.user.uid, username, email)
+          .then(() => {
+            this.setState({ ...INITIAL_STATE });
+            history.push(routes.HOME);
+          })
+          .catch(error => {
+            this.setState({ error });
+          });
       })
       .catch(error => {
         this.setState({ error });
@@ -68,7 +75,7 @@ export class Signup extends Component {
 
   render() {
     return (
-      <Form
+      <SignupForm
         handleChange={this.handleChange}
         handleClick={this.handleClick}
         {...this.state}

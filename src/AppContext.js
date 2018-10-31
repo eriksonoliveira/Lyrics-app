@@ -55,7 +55,9 @@ export class AppProvider extends Component {
   componentDidMount() {
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
-        ? this.setState({ authUser: authUser.email })
+        ? this.setState({
+            authUser: { email: authUser.email, uid: authUser.uid }
+          })
         : this.setState({ authUser: null });
     });
   }

@@ -1,13 +1,27 @@
 import React from "react";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../ErrorMessage";
 
-const Form = props => {
-  const { email, password, error } = props;
+const SignupForm = props => {
+  const { email, username, password, error } = props;
 
-  const isInvalid = password === "" || email === "";
+  const isInvalid = password === "" || email === "" || username === "";
 
   return (
     <form className="form">
+      <label htmlFor="signup-email" className="sr-only">
+        Username
+      </label>
+      <input
+        id="signup-username"
+        className="form-input"
+        type="text"
+        placeholder="Username"
+        maxLength="16"
+        value={username}
+        name="username"
+        required
+        onChange={e => props.handleChange(e)}
+      />
       <label htmlFor="signup-email" className="sr-only">
         Email
       </label>
@@ -29,6 +43,7 @@ const Form = props => {
         className="form-input"
         type="password"
         placeholder="Password"
+        maxLength="16"
         value={password}
         name="password"
         required
@@ -47,4 +62,4 @@ const Form = props => {
   );
 };
 
-export default Form;
+export default SignupForm;
