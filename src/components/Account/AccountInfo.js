@@ -23,11 +23,7 @@ export class AccountInfo extends Component {
 
   render() {
     const { authUser } = this.props;
-    return (
-      <div>
-        <div>{authUser.email}</div>
-      </div>
-    );
+    return <div className="account-email text-center">{authUser.email}</div>;
   }
 }
 

@@ -8,7 +8,7 @@ import SigninWrap from "./Signin/SigninWrap";
 import SignupWrap from "./Signup/SignupWrap";
 import LyricsWrap from "../containers/Lyrics/LyricsWrap";
 import Account from "./Account";
-import SavedTracks from "./SavedTracks";
+import FavouriteTracks from "./FavouriteTracks";
 
 import * as routes from "../constants/routes";
 
@@ -44,7 +44,7 @@ class App extends Component {
                 <Route
                   exact
                   path={routes.SAVED_TRACKS}
-                  render={() => <SavedTracks />}
+                  render={() => <FavouriteTracks />}
                 />
               </React.Fragment>
             </Switch>

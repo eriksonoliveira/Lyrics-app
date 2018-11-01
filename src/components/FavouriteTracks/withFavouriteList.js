@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { firebase, db } from "../../firebase";
 
+import Spinner from "../Spinner/Spinner";
+
 const withFavouriteList = Component => {
   class withFavouriteList extends React.Component {
     _isMounted = false;
@@ -39,11 +41,7 @@ const withFavouriteList = Component => {
         snapshot.forEach(track => {
           tracks_list.push({ track: track.val(), track_key: track.key });
         });
-        if (tracks_list.length > 0) {
-          this.setState({ tracks_list });
-        } else {
-          this.setState({ tracks_list: null });
-        }
+        this.setState({ tracks_list });
       });
     }
 
@@ -56,7 +54,7 @@ const withFavouriteList = Component => {
 
     render() {
       const { tracks_list } = this.state;
-      if (tracks_list) {
+      if (tracks_list !== null) {
         return (
           <Component
             {...this.props}
@@ -65,7 +63,7 @@ const withFavouriteList = Component => {
           />
         );
       } else {
-        return <div>You don't have any saved traks</div>;
+        return <Spinner />;
       }
     }
   }

@@ -1,0 +1,11 @@
+.delete-track {
+  height: 0.82rem;
+  width: 0.82rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  background-image: url("../../Images/cancel-button.png");
+  background-size: cover;
+  cursor: pointer;
+}

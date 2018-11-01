@@ -10,22 +10,20 @@ class DeleteAccount extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount() {}
-
   handleDelete() {
-    console.log(this.props);
-    const { authUser } = this.props;
     auth.doDeleteAccount().then(() => {
-      // db.doDeleteUser(authUser.uid).then(() => {
       this.props.history.push(routes.HOME);
-      // });
     });
   }
 
   render() {
     return (
-      <div>
-        <button type="button" onClick={this.handleDelete}>
+      <div className="text-center form mt-1">
+        <button
+          type="button"
+          className="submit-btn form-input text-center"
+          onClick={this.handleDelete}
+        >
           Delete Account
         </button>
       </div>

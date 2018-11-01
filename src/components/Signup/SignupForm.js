@@ -8,7 +8,7 @@ const SignupForm = props => {
 
   return (
     <form className="form">
-      <label htmlFor="signup-email" className="sr-only">
+      <label htmlFor="signup-username" className="sr-only">
         Username
       </label>
       <input

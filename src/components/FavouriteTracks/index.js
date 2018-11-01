@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import SavedTracksList from "./SavedTracksList";
+import FavouriteTracksList from "./FavouriteTracksList";
 import withAuthorization from "../withAuthorization";
 import withFavouriteList from "./withFavouriteList";
 
-class SavedTracks extends Component {
+class FavouriteTracks extends Component {
   componentDidMount() {
     this.props.dispatch({
       type: "CHANGE_ACTIVE",
@@ -21,11 +21,11 @@ class SavedTracks extends Component {
     });
   }
   render() {
-    const TracksListWithFavourite = withFavouriteList(SavedTracksList);
+    const TracksListWithFavourite = withFavouriteList(FavouriteTracksList);
     return <TracksListWithFavourite />;
   }
 }
 
 const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(SavedTracks);
+export default withAuthorization(authCondition)(FavouriteTracks);

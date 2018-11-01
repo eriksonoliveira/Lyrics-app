@@ -47,7 +47,7 @@
   width: 1rem;
   background-color: transparent;
   /* background-color: var(--input-background); */
-  background-image: url("./Images/cancel-button.png");
+  background-image: url("../../Images/cancel-button.png");
   -webkit-background-size: cover;
   background-size: cover;
   color: #ff6c00;
