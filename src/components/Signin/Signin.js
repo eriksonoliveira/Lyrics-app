@@ -49,7 +49,6 @@ export class SignIn extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log(this.state);
 
     const { email, password } = this.state;
     const { history } = this.props;

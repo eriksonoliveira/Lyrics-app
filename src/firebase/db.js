@@ -11,6 +11,10 @@ export const onceGetUser = id => {
   return db.ref(`users/${id}`).once("value");
 };
 
+export const doDeleteUser = uid => {
+  return db.ref("users").child(uid).remove();
+}
+
 export const doSaveTrack = (
   uid,
   track_id,

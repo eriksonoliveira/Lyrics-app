@@ -1,14 +1,16 @@
 import React from "react";
-import { AppConsumer } from "../../AppContext";
+// import { AppConsumer } from "../../AppContext";
 import AccountInfo from "./AccountInfo";
+import DeleteAccount from "./DeleteAccount";
 
 import withAuthorization from "../withAuthorization";
 
-const Account = () => {
+const Account = props => {
   return (
-    <AppConsumer>
-      {appContext => <AccountInfo appContext={appContext} />}
-    </AppConsumer>
+    <React.Fragment>
+      <AccountInfo dispatch={props.dispatch} authUser={props.authUser} />
+      <DeleteAccount authUser={props.authUser} />
+    </React.Fragment>
   );
 };
 

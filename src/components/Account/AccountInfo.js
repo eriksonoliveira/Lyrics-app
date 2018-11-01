@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 export class AccountInfo extends Component {
   componentDidMount() {
-    const { dispatch } = this.props.appContext;
+    const { dispatch } = this.props;
 
     dispatch({
       type: "CHANGE_ACTIVE",
@@ -16,13 +16,13 @@ export class AccountInfo extends Component {
   }
 
   componentWillUnmount() {
-    this.props.appContext.dispatch({
+    this.props.dispatch({
       type: "HIDE_ARROW"
     });
   }
 
   render() {
-    const { authUser } = this.props.appContext;
+    const { authUser } = this.props;
     return (
       <div>
         <div>{authUser.email}</div>

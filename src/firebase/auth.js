@@ -24,3 +24,8 @@ export const doPasswordReset = email => {
 export const doPasswordUpdate = password => {
   return auth.currentUser.updatePassword(password);
 };
+
+// Delete Account
+export const doDeleteAccount = () => {
+  return auth.currentUser.delete();
+};
