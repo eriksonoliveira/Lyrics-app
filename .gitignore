@@ -24,4 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 #firebase config
+<<<<<<< HEAD
 src/constants/firebase_config.js
+=======
+#src/constants/firebase_config.js
+>>>>>>> development
