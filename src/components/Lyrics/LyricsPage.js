@@ -20,12 +20,14 @@ const LyricsPage = props => {
 
   return (
     <div className="lyrics">
-      <h1 className="lyrics-track-name">{track_name}</h1>
-      <h2 className="lyrics-artist-album">{`${artist_name} - ${album_name}`}</h2>
-      <h2 className="lyrics-release-date">
-        <Moment format="YYYY">{first_release_date}</Moment>
-      </h2>
-      <FavouriteButton />
+      <div className="lyrics-top">
+        <h1 className="lyrics-track-name">{track_name}</h1>
+        <h2 className="lyrics-artist-album">{`${artist_name} - ${album_name}`}</h2>
+        <h2 className="lyrics-release-date">
+          <Moment format="YYYY">{first_release_date}</Moment>
+        </h2>
+        <FavouriteButton />
+      </div>
       <Lyrics lyrics_body={lyrics.lyrics_body} />
       <div>
         <SpotifyPlayer artist_id={artist.id} />

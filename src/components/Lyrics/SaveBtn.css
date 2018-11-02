@@ -1,0 +1,26 @@
+.save-btn {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+  bottom: 0px;
+  transition: transform 0.2s;
+}
+
+.save-btn > #heart,
+.save-btn > #heart-saved {
+  width: 20px;
+  height: 20px;
+}
+
+.save-btn > #heart {
+  stroke: #fff;
+}
+
+.save-btn > #heart-saved > path {
+  fill: #a0204c;
+}
+
+.save-btn:hover {
+  transform: scale(1.1);
+}

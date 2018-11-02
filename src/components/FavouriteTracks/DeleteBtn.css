@@ -4,7 +4,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 0;
+  right: 5px;
   background-image: url("../../Images/cancel-button.png");
   background-size: cover;
   cursor: pointer;

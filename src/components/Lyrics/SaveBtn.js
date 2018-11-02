@@ -1,10 +1,13 @@
 import React from "react";
+import Icon from "./Icon";
+import IconSaved from "./IconSaved";
+
+import "./SaveBtn.css";
 
 const SaveBtn = props => {
-  const classes = `save-btn ${props.saved ? "track-saved" : ""}`;
   return (
-    <div className={classes} onClick={props.handleSaveClick}>
-      save
+    <div className="save-btn" onClick={props.handleSaveClick}>
+      {props.saved ? <IconSaved /> : <Icon />}
     </div>
   );
 };

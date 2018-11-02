@@ -8,6 +8,7 @@
 .track {
   border-bottom: 1px solid rgba(158, 53, 90, 0.8);
   margin-right: 10px;
+  padding-right: 1.2rem;
   position: relative;
 }
 
