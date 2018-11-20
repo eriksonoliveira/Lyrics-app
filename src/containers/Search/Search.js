@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { helpers } from "../../helpers";
 
 import Form from "./Form";
 import Header from "../../components/Header/Header";
@@ -40,28 +41,28 @@ class Search extends Component {
     }
   }
 
-  findTrack(dispatch, list_active, e) {
-    e.preventDefault();
-
+  toggleList(dispatch, active) {
     // If the list is active, just clear the list, otherwise, make the list active
-    const type = list_active ? "CLEAR_TRACKS" : "SHOW_LIST";
+    const type = active ? "CLEAR_TRACKS" : "SHOW_LIST";
     dispatch({
       type,
       payload: []
     });
+  }
+
+  findTrack(dispatch, list_active, e) {
+    e.preventDefault();
+
+    this.toggleList(dispatch, list_active);
 
     if (this.props.trackTitle.length > 0) {
-      // TEST KEY
-      // console.log(process.env.REACT_APP_MUSIXMATCH_KEY);
+      const url = helpers.makeUrl(
+        this.props.trackTitle,
+        process.env.REACT_APP_MUSIXMATCH_KEY
+      );
 
       axios
-        .get(
-          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=${
-            this.props.trackTitle
-          }&page_size=10&page=1&s_track_rating=desc&apikey=${
-            process.env.REACT_APP_MUSIXMATCH_KEY
-          }`
-        )
+        .get(url)
         .then(res => {
           if (res.data.message.header.available !== 0) {
             dispatch({

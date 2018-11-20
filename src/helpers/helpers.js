@@ -33,3 +33,13 @@ export function formatRouteName(str) {
   const firstLetter = routeName.charAt(0).toUpperCase();
   return firstLetter + routeName.substr(1);
 }
+
+export function makeUrl(title, apiKey) {
+  const url =
+    "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" +
+    title +
+    "&page_size=10&page=1&s_track_rating=desc&apikey=" +
+    apiKey;
+
+  return url;
+}

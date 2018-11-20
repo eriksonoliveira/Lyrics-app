@@ -21,3 +21,17 @@ describe("replaceSpaces helper function", () => {
     expect(helpers.replaceSpaces(str)).toMatch(/\w+(%20)+\w*/);
   });
 });
+
+describe("makeUrl helper function", () => {
+  it("builds the url with the search string and api key", () => {
+    const title = "trackTitle";
+    const apiKey = "MUSIXMATCH_KEY";
+    const expectedUrl =
+      "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" +
+      title +
+      "&page_size=10&page=1&s_track_rating=desc&apikey=" +
+      apiKey;
+
+    expect(helpers.makeUrl(title, apiKey)).toBe(expectedUrl);
+  });
+});
