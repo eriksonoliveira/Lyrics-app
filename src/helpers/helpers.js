@@ -1,5 +1,5 @@
 // Remove 'feat.' from artist string (Spotify does not recognize if it's present)
-function prepareString(str) {
+export function prepareString(str) {
   const reg = /feat./;
   let newStr;
 
