@@ -1,21 +1,39 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 
 import Lyrics from "./Lyrics";
 import LyricsPage from "../../components/Lyrics/LyricsPage";
-import Spinner from "../../components/Spinner/Spinner";
+
+jest.mock("../../services/spotify");
+jest.mock("../../services/musixmatch");
 
 describe("<Lyrics />", () => {
-  it("renders <LyricsPage /> component", done => {
+  let wrapper;
+
+  beforeAll(done => {
     const mockDispatch = (obj = {}) => obj;
     const mockParams = { params: { id: 84398315 } };
-    const wrapper = mount(
-      <Lyrics dispatch={mockDispatch} match={mockParams} />
-    );
 
-    setTimeout(() => {
-      expect(wrapper.find(Spinner).length).toBe(1);
-      done();
-    });
+    wrapper = shallow(<Lyrics dispatch={mockDispatch} match={mockParams} />);
+    done();
+  });
+
+  it("fetches artist, lyrics and track data", () => {
+    // setTimeout(() => {
+    wrapper.update();
+
+    const state = wrapper.instance().state;
+    expect(state.track).toBeInstanceOf(Object);
+    expect(
+      Object.keys(state.track).length &&
+        Object.keys(state.lyrics).length &&
+        Object.keys(state.artist).length
+    ).toBeGreaterThan(0);
+
+    console.log(state.track);
+  });
+
+  it("renders <LyricsPage /> component", () => {
+    expect(wrapper.find(LyricsPage)).toHaveLength(1);
   });
 });

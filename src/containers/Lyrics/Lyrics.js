@@ -65,7 +65,6 @@ class Lyrics extends Component {
         }
       })
       .catch(err => {
-        console.error(err);
         this.setState({ showErrorMsg: true });
       });
   }
