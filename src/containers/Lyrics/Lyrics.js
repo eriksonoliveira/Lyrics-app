@@ -3,7 +3,7 @@ import {
   getSpotifyToken,
   getArtistInfoFromSpotify
 } from "../../services/spotify";
-import musixmatch from "../../services/musixmatch";
+import { getTrackDataFromMusixmatch } from "../../services/musixmatch";
 
 import "./Lyrics.css";
 
@@ -33,12 +33,15 @@ class Lyrics extends Component {
     });
 
     // Getting lyrics and track info
-    musixmatch("track.lyrics.get", this.props.match.params.id)
+    getTrackDataFromMusixmatch("track.lyrics.get", this.props.match.params.id)
       .then(res => {
         const lyrics = res.lyrics;
         this.setState({ lyrics });
 
-        return musixmatch("track.get", this.props.match.params.id);
+        return getTrackDataFromMusixmatch(
+          "track.get",
+          this.props.match.params.id
+        );
       })
       .then(res => {
         const track = res.track;

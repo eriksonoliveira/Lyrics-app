@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { helpers } from "../../helpers";
+import { getTracksListFromMusixmatch } from "../../services/musixmatch";
 
 import Form from "./Form";
 import Header from "../../components/Header/Header";
@@ -56,18 +55,12 @@ class Search extends Component {
     this.toggleList(dispatch, list_active);
 
     if (this.props.trackTitle.length > 0) {
-      const url = helpers.makeUrl(
-        this.props.trackTitle,
-        process.env.REACT_APP_MUSIXMATCH_KEY
-      );
-
-      axios
-        .get(url)
+      getTracksListFromMusixmatch(this.props.trackTitle)
         .then(res => {
-          if (res.data.message.header.available !== 0) {
+          if (res.header.available !== 0) {
             dispatch({
               type: "SEARCH_TRACKS",
-              payload: res.data.message.body.track_list
+              payload: res.body.track_list
             });
           } else {
             dispatch({
