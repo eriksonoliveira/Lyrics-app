@@ -1,40 +1,41 @@
+// @flow
+
 // Remove 'feat.' from artist string (Spotify does not recognize if it's present)
-export function prepareString(str) {
+export function prepareString(str: string) {
   const reg = /feat./;
-  let newStr;
 
   if (reg.test(str)) {
-    str = str.split(" ");
+    let newStr: Array<string> = str.split(" ");
     // Get index of 'feat.' string in the array
-    const featIndex = str.findIndex(elem => reg.test(elem));
-    newStr = str.slice(0, featIndex).join(" ");
+    const featIndex: number = newStr.findIndex(elem => reg.test(elem));
 
-    return newStr;
+    return newStr.slice(0, featIndex).join(" ");
   }
 
   return str;
 }
 
-export function replaceSpaces(str) {
-  str = prepareString(str);
+export function replaceSpaces(str: string) {
+  let newStr: string = prepareString(str);
 
   const regSpace = /\s+/g;
   const regAmp = /&+/g;
 
-  // improve this code
-  str = regSpace.test(str) ? str.replace(regSpace, "%20") : str;
-  str = regAmp.test(str) ? str.replace(regAmp, "%26") : str;
+  // TODO improve this code
+  if (regSpace.test(newStr)) {
+    newStr = newStr.replace(regSpace, "%20").replace(regAmp, "%26");
+  }
 
-  return str;
+  return newStr;
 }
 
-export function formatRouteName(str) {
-  const routeName = str.substr(1).replace("-", " ");
-  const firstLetter = routeName.charAt(0).toUpperCase();
+export function formatRouteName(str: string) {
+  const routeName: string = str.substr(1).replace("-", " ");
+  const firstLetter: string = routeName.charAt(0).toUpperCase();
   return firstLetter + routeName.substr(1);
 }
 
-export function makeUrl(title, apiKey) {
+export function makeUrl(title: string, apiKey: string) {
   const url =
     "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" +
     title +
