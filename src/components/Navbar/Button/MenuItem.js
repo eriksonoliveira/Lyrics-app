@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { helpers } from "../../../helpers";
+import { formatRouteName } from "../../../helpers";
 
 const MenuItem = props => {
-  const routeName = helpers.formatRouteName(props.route);
+  const routeName = formatRouteName(props.route);
 
   return (
     <div className="menu-item">

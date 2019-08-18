@@ -1,22 +1,22 @@
 // @flow
 
-import { helpers } from "../helpers";
+import { replaceSpaces } from "../helpers";
 import axios from "axios";
 
-import type { httpRequestHeaders } from "./services.types";
+import type { HttpRequestHeaders, Headers } from "./services.types";
 
 // Build Spotify fetch URL
 export function createURLArtist(
   track: string,
   artist: string,
   accessToken: string
-): httpRequestHeaders {
-  const artistName = helpers.replaceSpaces(artist);
-  const trackName = helpers.replaceSpaces(track);
-  const BASE_URL = "https://api.spotify.com/v1/search?";
+): HttpRequestHeaders {
+  const artistName: string = replaceSpaces(artist);
+  const trackName: string = replaceSpaces(track);
+  const BASE_URL: string = "https://api.spotify.com/v1/search?";
 
-  const FETCH_URL = `${BASE_URL}q=track%3A${trackName}%20artist%3A${artistName}&type=track&limit=1`;
-  const headers = {
+  const FETCH_URL: string = `${BASE_URL}q=track%3A${trackName}%20artist%3A${artistName}&type=track&limit=1`;
+  const headers: Headers = {
     method: "GET",
     headers: {
       Authorization: "Bearer " + accessToken

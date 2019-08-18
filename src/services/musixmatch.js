@@ -4,7 +4,7 @@ const API_KEY = process.env.REACT_APP_MUSIXMATCH_KEY;
 
 export function getTrackDataFromMusixmatch(type, song_id) {
   return new Promise((resolve, reject) => {
-    let FETCH_URL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/${type}?track_id=${song_id}&apikey=${API_KEY}`;
+    const FETCH_URL = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/${type}?track_id=${song_id}&apikey=${API_KEY}`;
 
     axios
       .get(FETCH_URL)
